@@ -7,7 +7,7 @@ en_link: "/en/embedded-checkout-sdk"
 zh-Hant_link: "/zh-hk/embedded-checkout-sdk"
 ---
 
-本頁面向商戶網頁開發者，按瀏覽器 SDK V1.0 整理。支付建單和最終結果確認由商戶伺服器端完成，見[嵌入式接入流程](/zh-hk/embedded-checkout-integration)。以下示例使用生產 SDK 和 `env: 'pro'`。前端 SDK 沒有沙盒選項，不要將商戶 API 的 `sandbox` 直接作為 SDK 初始化值；腳本和應用憑證須與 SDK 環境對應。
+本頁面向商戶網頁開發者，按瀏覽器 SDK V1.0 整理。支付建單和最終結果確認由商戶伺服器端完成，見[嵌入式接入流程](/zh-hk/embedded-checkout-integration)。以下程式碼示例使用生產配置。
 
 ## 引入 SDK
 
@@ -15,8 +15,10 @@ SDK 通過腳本標籤分發，沒有 npm 包。先在頁面 HTML 中載入腳�
 
 | 環境 | SDK 腳本地址 | 初始化 `env` |
 | --- | --- | --- |
-| 測試 | `https://t-payment.yeahpay.net/checkout/yeahpay-checkout-sdk/checkoutSDK.js` | `test` |
+| 沙盒 | `https://sandbox.yeahpay.net/checkout/yeahpay-checkout-sdk/checkoutSDK.js` | `sandbox` |
 | 生產 | `https://payment.yeahpay.net/checkout/yeahpay-checkout-sdk/checkoutSDK.js` | `pro` |
+
+聯調時，使用沙盒 SDK 腳本和 `env: 'sandbox'`，並使用沙盒應用 ID 和沙盒 API 建立的支付意圖。上線時，將腳本地址、`env` 和應用配置切換到生產環境。
 
 ```html
 <script src="https://payment.yeahpay.net/checkout/yeahpay-checkout-sdk/checkoutSDK.js"></script>
@@ -54,7 +56,7 @@ element.mount(document.getElementById('yeahpay-checkout'))
 | 初始化參數 | 必填 | 說明 |
 | --- | --- | --- |
 | `appId` | 是 | 公開的應用 ID，不能填寫 API key |
-| `env` | 是 | `test` 為測試，`pro` 為生產；與建單環境和 SDK 腳本保持一致 |
+| `env` | 是 | `sandbox` 為沙盒，`pro` 為生產。須與建單環境和 SDK 腳本一致 |
 | `debug` | 否 | 預設 `false`，打開 SDK 生命週期除錯日誌 |
 
 `init()` 重複調用會覆蓋全局配置，建議整個應用只初始化一次。展示語言由建單的 `checkout.locale` 設置，不放在 `init()` 參數中。
@@ -239,14 +241,21 @@ SDK 負責 3DS 查詢和 Continue。已有 Consent 直接支付在建單時已�
 
 ## 自研頁面後續支付的設備資料
 
-買家在商戶自研頁面選擇已綁定卡、直接發起後續支付時，需要在該頁面接入設備指紋腳本，並讓採集標識與支付請求一致。測試腳本可放在頁面結束位置：
+買家在商戶自研頁面選擇已綁定卡、直接發起後續支付時，需要在該頁面接入設備指紋腳本，並讓採集標識與支付請求一致。根據支付環境選擇對應的腳本。
+
+| 環境 | 設備指紋腳本地址 |
+| --- | --- |
+| 沙盒 | `https://static.sandbox.airwallex.com/webapp/fraud/device-fingerprint/index.js` |
+| 生產 | `https://static.airwallex.com/webapp/fraud/device-fingerprint/index.js` |
+
+以下生產示例可放在頁面的 `</body>` 之前。
 
 ```html
 <script
   async
   id="airwallex-fraud-api"
   data-order-session-id="PAYMENT_DEVICE_UUID"
-  src="https://static.sandbox.airwallex.com/webapp/fraud/device-fingerprint/index.js">
+  src="https://static.airwallex.com/webapp/fraud/device-fingerprint/index.js">
 </script>
 ```
 

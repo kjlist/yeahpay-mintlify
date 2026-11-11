@@ -1466,7 +1466,6 @@
                   "data": {
                     "linkId": "SAMPLE_LINK_ID",
                     "merchantLinkNo": "LINK-TIMESTAMP",
-                    "paymentUrl": "https://t-payment.yeahpay.net/checkout/paymentlink/#/?id=SAMPLE_LINK_ID",
                     "status": "PENDING",
                     "currency": "SGD",
                     "amount": 9900,
@@ -5514,7 +5513,7 @@
           "expireTime": {
             "type": "integer",
             "format": "int64",
-            "description": "Expiry as a Unix timestamp in seconds; replace example values for your use case. The supplied specification records an eight-hour test-environment clock discrepancy: allow over eight hours and verify status during integration. Production uses the actual intended time."
+            "description": "When the link expires, as a Unix timestamp in seconds."
           },
           "emailNotifyEnabled": {
             "type": "boolean",

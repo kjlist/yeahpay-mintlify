@@ -31,7 +31,7 @@ zh-Hant_link: "/zh-hk/embedded-checkout-integration"
 
 伺服器端按[請求授權](/zh-hk/api-authentication)產生簽名並設置公共請求頭。`Accept-Timezone` 指定同步響應記錄時間的時區；沒有偏移量的時間字符串不可自行補 `Z`。
 
-前端 SDK 沒有沙盒選項，實際支持的 `test`、`pro` 與商戶 API 環境選擇分別配置，見[嵌入式 SDK 接入](/zh-hk/embedded-checkout-sdk)。
+商戶 API 與前端 SDK 使用同一環境。沙盒聯調時，前端載入沙盒 SDK 並傳入 `env: 'sandbox'`。生產環境使用生產 SDK 和 `env: 'pro'`。腳本地址見[嵌入式 SDK 接入](/zh-hk/embedded-checkout-sdk)。
 
 ## 支付與綁卡場景
 

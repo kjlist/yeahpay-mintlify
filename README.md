@@ -95,7 +95,7 @@ openapi.json
 
 英文 OpenAPI 不是通过在线翻译服务生成的。`scripts/build-openapi-en.mjs` 使用仓库内维护的中英文映射表递归翻译字段值。如果生成结果仍包含未翻译的中文，脚本会直接失败；新增或修改中文文案时，需要同时维护对应的英文映射。
 
-香港繁体生成使用锁定版本的 OpenCC 香港转换及术语表，只转换说明文字和导航；保护代码、参数名、枚举、示例值和真实接口路径。商户 API 环境配置以 OpenAPI 为准，前端 SDK 的 `test/pro` 单独维护，不增加 SDK 沙箱选项。
+香港繁体生成使用锁定版本的 OpenCC 香港转换及术语表，转换说明文字并保护代码、参数名、枚举、示例值和真实接口路径。商户 API 环境地址以 OpenAPI 为准。前端 SDK 的环境值是 `sandbox` 和 `pro`，脚本地址见嵌入式 SDK 接入指南。
 
 各页面的 `zh-CN_link`、`zh-Hant_link` 和 `en_link` 指向同一内容的三语版本。API 页面对应链接由同步脚本写入 `x-mint.metadata`，新增指南页面时也应补齐对应链接。
 
@@ -174,7 +174,7 @@ Codex 和 Claude Code 共用 `scripts/hooks/` 下的 hook 实现：
 1. 不要直接编辑 `openapi-en.json`，重新生成时所有手工修改都会被覆盖。
 2. 不要直接编辑 `snippets/signed-api-playground.jsx` 中标记为自动生成的 OpenAPI 操作块；组件其他非生成部分可以正常维护。
 3. 新增中文 OpenAPI 文案但未补充英文映射时，英文生成脚本会失败。
-4. 全局 OpenAPI 默认服务器为 acceptance 测试地址；`getRedirectUrl`、`createIntent`、`queryIntentStatus` 通过操作级 `servers` 使用独立 Checkout 入口：测试 `https://t-acquire-business.lepass.cn/gwp/checkout`，生产 `https://open-api.yeahpay.net/gwp/checkout`。`x-environment: test/production` 同步签名工具的环境选项；签名路径保留 `/checkout`、去掉 `/gwp`。Checkout 沙箱入口仍待确认，不从 acceptance 地址推导。
+4. 商户 API 的沙箱入口为 `https://sandbox-api.yeahpay.net/acceptance/sandbox`。生产环境的 Checkout 接口使用 `https://open-api.yeahpay.net/gwp/checkout`，其他商户 API 使用 OpenAPI 中配置的生产入口。签名工具通过 `x-environment` 读取各接口的沙箱和生产地址。
 5. 仓库没有 Node.js 包清单或锁文件；生成脚本仅依赖 Node.js 内置模块，Mintlify CLI 需要单独全局安装。
 6. 仓库没有内置发布工作流。线上发布方式取决于外部 Mintlify 项目的部署配置。
 7. `docs.json` 中的 Support、Dashboard 和页脚社交链接仍是 Mintlify 通用配置，正式发布前应替换为 YeahPay 的实际链接。

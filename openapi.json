@@ -1466,7 +1466,6 @@
                   "data": {
                     "linkId": "SAMPLE_LINK_ID",
                     "merchantLinkNo": "LINK-TIMESTAMP",
-                    "paymentUrl": "https://t-payment.yeahpay.net/checkout/paymentlink/#/?id=SAMPLE_LINK_ID",
                     "status": "PENDING",
                     "currency": "SGD",
                     "amount": 9900,
@@ -5514,7 +5513,7 @@
           "expireTime": {
             "type": "integer",
             "format": "int64",
-            "description": "失效时间，秒级 Unix 时间戳，示例值须按实际业务替换。附件记录测试环境存在 8 小时判定偏差，联调时请设置为当前时间加 8 小时以上并核对状态；生产按实际时刻处理"
+            "description": "链接失效时间，使用秒级 Unix 时间戳。"
           },
           "emailNotifyEnabled": {
             "type": "boolean",

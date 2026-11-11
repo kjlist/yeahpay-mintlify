@@ -35,7 +35,7 @@ Select [Sandbox or Production](/en#environment-urls) on [Create PaymentIntent](/
 
 Follow [Request Authentication](/en/api-authentication) for common headers and signing. `Accept-Timezone` sets the time zone of timestamps in synchronous responses. Keep the original format if a timestamp has no offset.
 
-The frontend SDK has no sandbox option. Its supported `test` and `pro` values are separate from the merchant API environment selector. See [Embedded SDK Integration](/en/embedded-checkout-sdk).
+Use the same environment for the merchant API and the frontend SDK. Load the sandbox SDK with `env: 'sandbox'` for integration testing. In production, load the production SDK with `env: 'pro'`. See [Embedded SDK Integration](/en/embedded-checkout-sdk) for the script URLs.
 
 ## Payment and binding scenarios
 

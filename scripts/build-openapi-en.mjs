@@ -435,7 +435,7 @@ const translations = new Map(Object.entries({
   "UNLIMITED 不限次；LIMITED 限次": "UNLIMITED for unlimited payments; LIMITED for a payment count limit",
   "收款次数上限，LIMITED 必填": "Maximum payment count, required for LIMITED",
   "生效时间，秒级 Unix 时间戳。省略时默认约 1 分钟后生效；提供时须晚于当前时间，建议至少预留 60 秒，否则返回 290039。PENDING 期间不能付款，待 ACTIVE 后分享": "Effective time as a Unix timestamp in seconds. Defaults to about one minute later when omitted. Explicit values must be in the future; allow at least 60 seconds to avoid 290039. Payment is unavailable while PENDING; share after the link becomes ACTIVE.",
-  "失效时间，秒级 Unix 时间戳，示例值须按实际业务替换。附件记录测试环境存在 8 小时判定偏差，联调时请设置为当前时间加 8 小时以上并核对状态；生产按实际时刻处理": "Expiry as a Unix timestamp in seconds; replace example values for your use case. The supplied specification records an eight-hour test-environment clock discrepancy: allow over eight hours and verify status during integration. Production uses the actual intended time.",
+  "链接失效时间，使用秒级 Unix 时间戳。": "When the link expires, as a Unix timestamp in seconds.",
   "收款成功是否向商户邮箱发通知": "Whether to email the merchant after a successful payment",
   "通知邮件语种，不传按商户地区": "Notification email language; defaults according to merchant region",
   "自定义支付成功页文案": "Custom payment success page message",

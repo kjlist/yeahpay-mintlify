@@ -7,7 +7,7 @@ en_link: "/en/embedded-checkout-sdk"
 zh-Hant_link: "/zh-hk/embedded-checkout-sdk"
 ---
 
-This guide is for merchant website developers and follows browser SDK V1.0. Your server creates payments and confirms results; see the [integration flow](/en/embedded-checkout-integration). Examples use the production SDK and `env: 'pro'`. The frontend SDK has no sandbox option; do not use `sandbox` as an SDK initialization value. SDK scripts and application credentials must match the SDK environment.
+This guide follows browser SDK V1.0. Your server creates payments and confirms results. See the [integration flow](/en/embedded-checkout-integration). The code examples use the production configuration.
 
 ## Load the SDK
 
@@ -15,8 +15,10 @@ The SDK is distributed as a script, without an npm package. Load it in your page
 
 | Environment | SDK script URL | Initialization `env` |
 | --- | --- | --- |
-| Test | `https://t-payment.yeahpay.net/checkout/yeahpay-checkout-sdk/checkoutSDK.js` | `test` |
+| Sandbox | `https://sandbox.yeahpay.net/checkout/yeahpay-checkout-sdk/checkoutSDK.js` | `sandbox` |
 | Production | `https://payment.yeahpay.net/checkout/yeahpay-checkout-sdk/checkoutSDK.js` | `pro` |
+
+For integration testing, use the sandbox SDK script, `env: 'sandbox'`, a sandbox app ID, and a PaymentIntent created through the sandbox API. When you go live, switch the script URL, `env`, and application configuration to production.
 
 ```html
 <script src="https://payment.yeahpay.net/checkout/yeahpay-checkout-sdk/checkoutSDK.js"></script>
@@ -54,7 +56,7 @@ element.mount(document.getElementById('yeahpay-checkout'))
 | Initialization option | Required | Description |
 | --- | --- | --- |
 | `appId` | Yes | Public application ID, never an API key |
-| `env` | Yes | `test` for test and `pro` for production; match the creation environment and SDK script |
+| `env` | Yes | `sandbox` for sandbox and `pro` for production. Match the PaymentIntent environment and SDK script |
 | `debug` | No | Defaults to `false`; enables SDK lifecycle logs |
 
 Repeated `init()` calls overwrite global configuration. Initialize once per application. Set the display language through `checkout.locale` during creation, rather than through `init()`.
@@ -239,14 +241,21 @@ The SDK handles 3DS queries and Continue. Existing-Consent direct charges alread
 
 ## Device data for subsequent payments on your own page
 
-When a buyer selects a bound card on your own page and initiates a subsequent charge directly, integrate device fingerprinting there and associate the same reference with the payment. The test script can be placed near the end of the page:
+When a buyer selects a bound card on your own page and initiates a subsequent charge directly, integrate device fingerprinting there and associate the same reference with the payment. Choose the script for the payment environment.
+
+| Environment | Device fingerprinting script URL |
+| --- | --- |
+| Sandbox | `https://static.sandbox.airwallex.com/webapp/fraud/device-fingerprint/index.js` |
+| Production | `https://static.airwallex.com/webapp/fraud/device-fingerprint/index.js` |
+
+Place the following production example before the closing `</body>` tag.
 
 ```html
 <script
   async
   id="airwallex-fraud-api"
   data-order-session-id="PAYMENT_DEVICE_UUID"
-  src="https://static.sandbox.airwallex.com/webapp/fraud/device-fingerprint/index.js">
+  src="https://static.airwallex.com/webapp/fraud/device-fingerprint/index.js">
 </script>
 ```
 
