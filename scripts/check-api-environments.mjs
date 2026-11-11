@@ -34,16 +34,23 @@ const expected = (operation, environment) => {
 const sourceOperations = Object.entries(spec.paths).flatMap(([path, item]) => Object.entries(item)
   .filter(([, operation]) => operation?.operationId)
   .map(([method, operation]) => ({ path, method: method.toUpperCase(), ...operation })));
-assert.equal(sourceOperations.length, operations.length);
-assert.equal(operations.length, 26, "Keep all existing operations except the six removed QR endpoints");
+const sourceOperationsById = new Map(sourceOperations.map(operation => [operation.operationId, operation]));
+assert.ok(sourceOperations.length > 0, "OpenAPI must define merchant operations");
+assert.equal(sourceOperationsById.size, sourceOperations.length, "OpenAPI operation IDs must be unique");
+assert.deepEqual(
+  operations.map(operation => operation.operationId).sort(),
+  [...sourceOperationsById.keys()].sort(),
+  "Playground operation IDs must match OpenAPI",
+);
 assert.ok(!sourceOperations.some(operation => operation.path.startsWith("/order/")));
 assert.ok(sourceOperations.some(operation => operation.operationId === "reversalOperation"));
 assert.ok(!sourceOperations.some(operation => ["createRefund", "listRefunds"].includes(operation.operationId)));
 const production = {};
 let signedCases = 0;
 for (const operation of operations) {
-  const source = sourceOperations.find(item => item.operationId === operation.operationId);
-  assert.equal(source.path, operation.path);
+  const source = sourceOperationsById.get(operation.operationId);
+  assert.equal(operation.method, source.method, `${operation.operationId}: method must match OpenAPI`);
+  assert.equal(operation.path, source.path, `${operation.operationId}: path must match OpenAPI`);
   const available = environmentsFor(operation);
   if (publicMode) {
     assert.deepEqual(Object.keys(available).sort(), ["production", "sandbox"]);
