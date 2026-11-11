@@ -1,0 +1,34 @@
+---
+title: "AgentPay"
+description: "Accept payments from AI agents or let agents make purchases within approved limits"
+zh-CN_link: "/agentpay"
+en_link: "/en/agentpay"
+zh-Hant_link: "/zh-hk/agentpay"
+---
+
+AgentPay lets AI agents make payments within rules set by the user. Users can authorize a stablecoin wallet or a credit card, review payment activity, and revoke authorization.
+
+## Use cases
+
+- **Accept payments from agents with Agent Pay-in.** API, MCP, content, and compute providers can charge agents per call, by usage, or by order.
+- **Let agents make purchases with Agent Pay-out.** Companies and agent platforms can authorize an agent to buy services from approved suppliers within a budget.
+
+## From authorization to settlement
+
+<Steps>
+  <Step title="The user sets payment rules">
+    The user chooses a funding method and sets an overall budget, a per-payment limit, an expiry date, and which merchants the agent can pay.
+  </Step>
+  <Step title="The agent initiates a payment">
+    YeahPay checks the agent's identity and permissions and verifies each payment against the user's rules. The user can authorize multiple payments without signing each one.
+  </Step>
+  <Step title="The merchant confirms and reconciles">
+    The merchant confirms payment and reconciles transactions against its statements. Settlement follows the arrangements for the funding method and merchant account.
+  </Step>
+</Steps>
+
+For stablecoin payments, a licensed wallet custodian holds funds. YeahPay records each payment off-chain and settles the net amount as agreed, which supports frequent, low-value payments. Credit card authorization and clearing go through card networks.
+
+## Get started with AgentPay
+
+Contact YeahPay to discuss the funding methods, eligibility, and settlement options for your business.

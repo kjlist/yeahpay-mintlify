@@ -1,0 +1,29 @@
+---
+title: "請求授權"
+description: "配置 YeahPay 商戶 API 的應用憑證、公共請求頭和請求簽名"
+zh-CN_link: "/api-authentication"
+en_link: "/en/api-authentication"
+zh-Hant_link: "/zh-hk/api-authentication"
+---
+
+使用對應環境的 `appId` 和 `apiKey`，在商戶伺服器端為每個請求產生 SHA-512 簽名。通過請求頭傳遞 `appId` 和 `signature`。`apiKey` 僅用於伺服器端計算簽名。
+
+## 公共請求頭
+
+商戶 API 使用 `POST` 和 JSON 請求體。各介面頁面列出介面特有的請求頭、請求體和響應字段。
+
+| Header | 必填 | 示例 | 說明 |
+| --- | --- | --- | --- |
+| `appId` | 是 | `1000122333` | YeahPay 分配的應用 ID |
+| `version` | 是 | `1.0` | 公共參數版本，固定為 `1.0` |
+| `timestamp` | 是 | `1694082355494` | 13 位毫秒時間戳 |
+| `nonce` | 是 | `FGHUdssdfs5sEDF` | 每次請求使用不同的隨機字符串 |
+| `algorithm` | 否 | `SHA-512` | 簽名算法，預設 `SHA-512` |
+| `signature` | 是 | `base64...` | SHA-512 摘要的標準 Base64 編碼 |
+| `Accept-Language` | 否 | `zh-CN` | API 響應語言 |
+| `Accept-Timezone` | 否 | `Asia/Shanghai` | API 響應時區 |
+| `Content-Type` | 是 | `application/json` | 請求體格式 |
+
+## 產生簽名
+
+簽名和發送請求時使用同一份原始 JSON。在[簽名規則與示例](/zh-hk/signature)查看簽名路徑、字段順序和程式碼示例，或用[簽名測試工具](/zh-hk/api-tester)產生指定介面的簽名和 cURL。接收支付或退款通知時，按[通知驗簽](/zh-hk/signature#通知驗簽)處理。

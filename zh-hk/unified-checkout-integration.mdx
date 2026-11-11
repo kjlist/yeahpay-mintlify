@@ -1,0 +1,51 @@
+---
+title: "統一收銀台接入"
+description: "取得託管收銀台地址並確認支付結果"
+zh-CN_link: "/unified-checkout-integration"
+en_link: "/en/unified-checkout-integration"
+zh-Hant_link: "/zh-hk/unified-checkout-integration"
+---
+
+統一收銀台（Unified Checkout）適合已有網站或 App、希望接入多種支付方式的商戶。商戶產生收銀台地址，買家跳轉到 YeahPay 託管頁面，選擇可用的支付方式並完成付款。
+
+## 接入流程
+
+接入前，請開通收銀台功能，並提交承載跳轉的商戶訪問域名進行審核。
+
+<Steps>
+  <Step title="伺服器端建立訂單">
+    產生當前商戶範圍內唯一的商戶訂單號 `merchantOrderId`（最長 64 個字符），準備金額（最小貨幣單位的整數）、幣種、商品類型、消費者資料、前端回跳地址 `callbackUrl` 和支付結果通知地址 `notificationUrl`。實物交易可同時傳入收貨資料 `shippingInfo` 和賬單資料 `billingInfo`。
+  </Step>
+  <Step title="取得統一收銀台地址">
+    伺服器端簽名並調用 [`POST /openapi/v2/getRedirectUrl`](/zh-hk/api-reference/統一收銀台/取得統一收銀台地址)。需要預授權時傳入 `checkoutMode=PRE_AUTH`；訂閱支付首期支付傳入 `checkoutMode=CONSENT_INITIAL`。
+  </Step>
+  <Step title="打開收銀台">
+    從響應的 `data.checkoutUrl` 取得託管頁面地址，並保存 `data.paymentIntentId`。移動端可在當前頁面跳轉；桌面網站可在新窗口或新標籤頁打開，並保留原商戶頁面。
+  </Step>
+  <Step title="確認支付結果">
+    驗證支付結果通知的簽名並冪等處理。若未及時收到通知，使用原 `paymentIntentId` 或 `merchantOrderId` 調用[支付意圖查詢介面](/zh-hk/api-reference/支付意圖/查詢支付意圖)主動確認。
+  </Step>
+</Steps>
+
+## 環境與簽名
+
+在[統一收銀台介面頁面](/zh-hk/api-reference/統一收銀台/取得統一收銀台地址)選擇沙盒或生產環境，使用對應的請求地址和憑證。簽名和公共請求頭見[請求授權](/zh-hk/api-authentication)。
+
+收銀台會話和短地址預設有效期為 24 小時，實際以環境配置為準。地址失效後，應先確認原訂單狀態。
+
+<CardGroup cols={2}>
+  <Card title="查看統一收銀台介面" icon="book-open" href="/zh-hk/api-reference/統一收銀台/取得統一收銀台地址">
+    查看完整請求字段、條件必填項和響應結構。
+  </Card>
+  <Card title="除錯簽名請求" icon="terminal" href="/zh-hk/api-tester?operationId=getRedirectUrl">
+    使用介面示例產生簽名請求頭和 cURL。
+  </Card>
+</CardGroup>
+
+<Note>
+  API 應由商戶伺服器端調用。`apiKey` 只能保存在伺服器端並參與簽名計算，不能下發到瀏覽器或 App。
+</Note>
+
+<Warning>
+  `callbackUrl` 僅用於消費者完成操作後的頁面回跳，不能作為支付成功的判斷依據。訂單最終狀態應以驗簽後的支付結果通知或支付查詢結果為準。
+</Warning>

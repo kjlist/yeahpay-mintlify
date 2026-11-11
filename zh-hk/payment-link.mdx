@@ -1,68 +1,25 @@
 ---
 title: "支付連結"
-description: "通過 API 建立可分享的收款連結，管理商品並接收收款結果"
+description: "通過連結或二維碼收款，適用於聊天成交、電話預訂和活動收費"
 zh-CN_link: "/payment-link"
 en_link: "/en/payment-link"
 zh-Hant_link: "/zh-hk/payment-link"
 ---
 
-Payment Link 支持指定金額收款和商品組單。商戶建立連結後，將返回的 `paymentUrl` 分享給買家完成付款。
+支付連結（Payment Link）讓商戶通過一條連結或二維碼向買家收款。商戶可在電腦端後台或手機 App 建立和管理連結。買家打開連結或掃描二維碼後，在支付頁面選擇付款方式。
 
-## 接入準備
+## 產品能力
 
-- 向平台開通支付連結功能，未開通時返回 `210004`。
-- 提供商戶伺服器端的出口 IP 並完成白名單配置，未授權請求可能在網關被拒絕。
-- 使用商戶後台的 `appId` 和 API key，沿用[快速開始](/)中的 API 域名及[SHA-512 簽名規則](/zh-hk/signature)。每個請求體都須傳與應用綁定商戶一致的 `merchantId`。
+- **按金額或商品收款。** 可指定收款金額，也可用多件商品組成訂單。收款幣種按商戶已開通範圍提供。
+- **設置支付頁面和收款規則。** 可配置品牌標識、顏色、地址或電話採集、買家附言、有效期和收款次數。
+- **跨渠道分享和管理。** 連結可通過聊天、郵件或短信發送，也可網上下展示二維碼。電腦端和 App 可查看同一連結的交易記錄。開通收款郵件通知後，商戶也可通過郵件收到成功提醒。
 
-請求金額單位為分，時間字段使用**秒級 Unix 時間戳**；簽名 Header 的 `timestamp` 使用毫秒。介面業務成功碼為 `0`。
+## 開始收款
 
-## 接入流程
+1. 聯繫客戶經理開通支付連結功能。
+2. 在商戶後台或 App 建立連結，填寫金額或商品，並設置收款規則。
+3. 把連結或二維碼發給買家。付款完成後，在商戶後台或 App 查看交易記錄。
 
-<Steps>
-  <Step title="準備商品，可選">
-    指定金額連結可直接建單。商品組單先[上傳圖片](/zh-hk/api-reference/支付連結/上傳支付連結商品圖片)，使用返回的 `fileId` [建立商品](/zh-hk/api-reference/支付連結/建立支付連結商品)。上傳使用 Base64 JSON，不使用 multipart。
-  </Step>
-  <Step title="建立支付連結">
-    調用[建立支付連結](/zh-hk/api-reference/支付連結/建立支付連結)，選擇 `FIXED_AMOUNT` 或 `PRODUCT`。建議始終提供唯一的 `merchantLinkNo`，並保存返回的 `linkId`；商品建立同樣建議提供 `merchantProductNo`。
-  </Step>
-  <Step title="確認連結生效並分享">
-    通過[連結詳情](/zh-hk/api-reference/支付連結/查詢支付連結詳情)確認狀態為 `ACTIVE`，再分享 `paymentUrl`。省略 `effectiveTime` 時預設約 1 分鐘後生效，`PENDING` 期間不能付款。
-  </Step>
-  <Step title="確認收款結果">
-    驗證收款成功通知的簽名後處理業務，同時保留查詢連結詳情中成功支付記錄的能力。
-  </Step>
-</Steps>
-
-## 建立防重與修改
-
-| 操作 | 約定 |
-| --- | --- |
-| 建立連結 | `requestId` 用於追蹤；建立防重依賴同商戶唯一的 `merchantLinkNo`，重複返回 `290053` |
-| 建立商品 | 建立防重依賴同商戶唯一的 `merchantProductNo`，重複返回 `290054` |
-| 修改字段 | `operation=UPDATE_FIELDS`，不可混傳 `status` |
-| 變更狀態 | `operation=CHANGE_STATUS`，只傳定位字段、請求標識和目標 `status` |
-
-不傳商戶側編號時，超時重試可能建立多條記錄。`ACTIVE` 連結不能修改金額；需要新建連結並停用原連結。連結不支持刪除，商品支持 `DELETED`。商品變更不影響已建立連結的商品快照。
-
-## 收款成功通知
-
-僅開放 API 建立的連結（`source=API`）支付成功後推送 `payment_link.paid`，失敗或退款不推送。優先使用連結的 `notifyUrl`，否則使用商戶預設結果回調地址；兩者都為空則不推送。
-
-通知 Header 包含 `appid`、`timestamp`、`version`、`nonce`、`algorithm` 和 `signature`。使用收到的原始請求體和 Header 值驗簽；簽名首行是配置的**完整回調 URL**，包含協議、域名、路徑及查詢串。
-
-```text
-signText = callbackUrl + LF + appid + LF + timestamp + LF
-         + version + LF + nonce + LF + rawBody + LF + apiKey
-signature = Base64(SHA-512(UTF-8(signText)))
-```
-
-驗簽並完成業務處理後返回純文本 `success`，其他應答會觸發重試，商戶應冪等處理同一支付訂單。通知中的 `thirdOrderId` 為支付業務訂單號；查詢連結詳情仍使用建立時保存的 `linkId` 或 `merchantLinkNo`。
-
-<CardGroup cols={2}>
-  <Card title="支付連結介面" icon="book-open" href="/zh-hk/api-reference/支付連結/建立支付連結">
-    建立、分頁查詢、詳情及修改連結。
-  </Card>
-  <Card title="簽名測試" icon="terminal" href="/zh-hk/api-tester?operationId=createPaymentLink">
-    產生帶商戶標識的 JSON 請求、簽名和 cURL。
-  </Card>
-</CardGroup>
+<Card title="支付連結 API 接入指南" icon="book-open" href="/zh-hk/payment-link-integration">
+  需要在自己的系統中建立和管理連結時，查看 API 接入流程。
+</Card>

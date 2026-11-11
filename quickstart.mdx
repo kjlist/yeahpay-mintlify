@@ -1,7 +1,7 @@
 ---
 title: "快速开始"
 description: "了解 YeahPay API 的环境地址、认证参数和接入流程"
-zh-CN_link: "/"
+zh-CN_link: "/quickstart"
 en_link: "/en"
 zh-Hant_link: "/zh-hk"
 ---
@@ -10,7 +10,10 @@ YeahPay API 使用 HTTPS 和 JSON 提供支付、查询、退款及收银台服�
 
 ## 环境地址
 
-API 域名：`https://open-api.yeahpay.net`。
+| 环境 | API 域名 |
+| --- | --- |
+| 沙箱 | `https://sandbox-api.yeahpay.net` |
+| 生产 | `https://open-api.yeahpay.net` |
 
 联调使用沙箱环境，正式交易使用生产环境，并分别使用对应的应用凭证。在各接口页面选择环境，按该环境的完整请求路径或生成的 cURL 调用。
 
@@ -20,23 +23,7 @@ API 域名：`https://open-api.yeahpay.net`。
 
 ## 公共请求头
 
-所有 API 请求均使用 `POST` 和 `application/json`。
-
-| Header | 必填 | 示例 | 说明 |
-| --- | --- | --- | --- |
-| `appId` | 是 | `1000122333` | YeahPay 分配的应用 ID |
-| `version` | 是 | `1.0` | 当前公共参数版本，固定为 `1.0` |
-| `timestamp` | 是 | `1694082355494` | 13 位毫秒时间戳 |
-| `nonce` | 是 | `FGHUdssdfs5sEDF` | 每次请求使用不同的随机字符串 |
-| `algorithm` | 否 | `SHA-512` | 签名算法 |
-| `signature` | 是 | `base64...` | SHA-512 摘要的标准 Base64 编码 |
-| `Accept-Language` | 否 | `zh-CN` | 响应语言 |
-| `Accept-Timezone` | 否 | `Asia/Shanghai` | 响应时区 |
-| `Content-Type` | 是 | `application/json` | 请求体格式 |
-
-<Note>
-  `apiKey` 只参与签名计算，不能作为 Header 或请求体字段发送。
-</Note>
+应用凭证、公共请求头和签名规则集中在[请求授权](/api-authentication)。
 
 ## 对接流程
 
@@ -51,7 +38,7 @@ API 域名：`https://open-api.yeahpay.net`。
     验证支付、查询、逆向交易和异步通知。支付或退款通知处理成功后，响应 Body 必须返回 `success`。
   </Step>
   <Step title="切换生产环境">
-    API 域名保持 `https://open-api.yeahpay.net`，按接口文档选择生产路径，并使用生产环境凭证。不要复用沙箱环境的 `appId` 或 `apiKey`。
+    在接口文档选择生产环境，使用 `https://open-api.yeahpay.net` 下的完整请求地址和生产环境凭证。
   </Step>
 </Steps>
 
@@ -59,7 +46,7 @@ API 域名：`https://open-api.yeahpay.net`。
   <Card title="签名规则与示例" icon="key" href="/signature">
     查看签名原文、URL 处理规则以及 JavaScript 和 Java 示例。
   </Card>
-  <Card title="API文档" icon="code" href="/api-reference/统一收银台/获取统一收银台地址">
-    查看接口字段、请求体和响应结构。
+  <Card title="API 文档" icon="code" href="/api-authentication">
+    从请求授权开始，查看各接口的请求与响应字段。
   </Card>
 </CardGroup>

@@ -1,0 +1,29 @@
+---
+title: "Request Authentication"
+description: "Configure application credentials, request headers, and signing for the YeahPay merchant API"
+zh-CN_link: "/api-authentication"
+en_link: "/en/api-authentication"
+zh-Hant_link: "/zh-hk/api-authentication"
+---
+
+Use the `appId` and `apiKey` for the selected environment to generate a SHA-512 signature for each request on your server. Send the `appId` and `signature` in request headers. Keep the `apiKey` on your server for signing.
+
+## Common request headers
+
+Merchant API requests use `POST` with a JSON body. Each endpoint page lists its additional headers, request body, and response fields.
+
+| Header | Required | Example | Description |
+| --- | --- | --- | --- |
+| `appId` | Yes | `1000122333` | Application ID assigned by YeahPay |
+| `version` | Yes | `1.0` | Common parameter version. Use `1.0` |
+| `timestamp` | Yes | `1694082355494` | 13-digit Unix timestamp in milliseconds |
+| `nonce` | Yes | `FGHUdssdfs5sEDF` | A unique random string for each request |
+| `algorithm` | No | `SHA-512` | Signature algorithm. Defaults to `SHA-512` |
+| `signature` | Yes | `base64...` | Standard Base64 encoding of the SHA-512 digest |
+| `Accept-Language` | No | `en` | Response language |
+| `Accept-Timezone` | No | `Asia/Singapore` | Response time zone |
+| `Content-Type` | Yes | `application/json` | Request body format |
+
+## Generate a signature
+
+Sign and send the same raw JSON. See [signature rules and examples](/en/signature) for the signing path, field order, and code samples. Use the [signed request tester](/en/api-tester) to generate a signature and cURL for an endpoint. To process payment or refund notifications, follow the [notification verification rules](/en/signature#verify-notification-signatures).

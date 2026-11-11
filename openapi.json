@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+      "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
       "description": "沙箱环境",
       "x-environment": "sandbox"
     },
@@ -59,7 +59,7 @@
         "description": "创建支付意图并返回统一收银台地址。",
         "operationId": "getRedirectUrl",
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=getRedirectUrl\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=getRedirectUrl\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E7%BB%9F%E4%B8%80%E6%94%B6%E9%93%B6%E5%8F%B0/%E8%8E%B7%E5%8F%96%E7%BB%9F%E4%B8%80%E6%94%B6%E9%93%B6%E5%8F%B0%E5%9C%B0%E5%9D%80",
             "en_link": "/en/api-reference/unified-checkout/get-unified-checkout-url",
@@ -77,13 +77,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -125,7 +119,7 @@
         },
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -147,7 +141,7 @@
         "operationId": "createIntent",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -168,13 +162,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -356,7 +344,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=createIntent\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=createIntent\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E6%84%8F%E5%9B%BE/%E5%88%9B%E5%BB%BA%E6%94%AF%E4%BB%98%E6%84%8F%E5%9B%BE",
             "en_link": "/en/api-reference/payment-intents/create-paymentintent",
@@ -375,7 +363,7 @@
         "operationId": "queryIntentStatus",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -396,13 +384,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -500,7 +482,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=queryIntentStatus\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=queryIntentStatus\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E6%84%8F%E5%9B%BE/%E6%9F%A5%E8%AF%A2%E6%94%AF%E4%BB%98%E6%84%8F%E5%9B%BE",
             "en_link": "/en/api-reference/payment-intents/query-paymentintent",
@@ -528,13 +510,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -578,7 +554,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=createConsentCustomer\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=createConsentCustomer\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E8%AE%A2%E9%98%85%E6%94%AF%E4%BB%98/%E5%88%9B%E5%BB%BA%E5%AE%A2%E6%88%B7",
             "en_link": "/en/api-reference/subscription-payments/create-customer",
@@ -606,13 +582,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -653,7 +623,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=updateConsentCustomer\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=updateConsentCustomer\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E8%AE%A2%E9%98%85%E6%94%AF%E4%BB%98/%E6%9B%B4%E6%96%B0%E5%AE%A2%E6%88%B7",
             "en_link": "/en/api-reference/subscription-payments/update-customer",
@@ -681,13 +651,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -728,7 +692,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=queryConsentCustomer\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=queryConsentCustomer\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E8%AE%A2%E9%98%85%E6%94%AF%E4%BB%98/%E6%9F%A5%E8%AF%A2%E5%AE%A2%E6%88%B7",
             "en_link": "/en/api-reference/subscription-payments/query-customer",
@@ -756,13 +720,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -803,7 +761,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=queryCustomerConsents\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=queryCustomerConsents\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E8%AE%A2%E9%98%85%E6%94%AF%E4%BB%98/%E6%9F%A5%E8%AF%A2%E5%AE%A2%E6%88%B7%E6%8E%88%E6%9D%83",
             "en_link": "/en/api-reference/subscription-payments/query-customer-consents",
@@ -831,13 +789,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -878,7 +830,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=queryConsent\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=queryConsent\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E8%AE%A2%E9%98%85%E6%94%AF%E4%BB%98/%E6%9F%A5%E8%AF%A2%E6%8E%88%E6%9D%83",
             "en_link": "/en/api-reference/subscription-payments/query-consent",
@@ -906,13 +858,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -953,7 +899,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=cancelConsent\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=cancelConsent\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E8%AE%A2%E9%98%85%E6%94%AF%E4%BB%98/%E5%8F%96%E6%B6%88%E6%8E%88%E6%9D%83",
             "en_link": "/en/api-reference/subscription-payments/cancel-consent",
@@ -981,13 +927,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -1028,7 +968,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=activateConsent\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=activateConsent\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E8%AE%A2%E9%98%85%E6%94%AF%E4%BB%98/%E9%87%8D%E6%96%B0%E5%90%AF%E7%94%A8%E6%8E%88%E6%9D%83",
             "en_link": "/en/api-reference/subscription-payments/reactivate-consent",
@@ -1056,13 +996,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -1103,7 +1037,7 @@
           }
         },
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=listConsentCharges\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=listConsentCharges\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E8%AE%A2%E9%98%85%E6%94%AF%E4%BB%98/%E6%9F%A5%E8%AF%A2%E6%89%A3%E6%AC%BE%E5%88%97%E8%A1%A8",
             "en_link": "/en/api-reference/subscription-payments/list-charges",
@@ -1120,7 +1054,7 @@
         "summary": "统一撤销或退款",
         "operationId": "reversalOperation",
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=reversalOperation\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=reversalOperation\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%92%A4%E9%94%80-%E9%80%80%E6%AC%BE/%E7%BB%9F%E4%B8%80%E6%92%A4%E9%94%80%E6%88%96%E9%80%80%E6%AC%BE",
             "en_link": "/en/api-reference/reversal-and-refund/unified-reversal-or-refund",
@@ -1138,13 +1072,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -1195,7 +1123,7 @@
         "description": "预授权完成接口（open-api服务）",
         "operationId": "preAuthCompleteOnline",
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=preAuthCompleteOnline\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=preAuthCompleteOnline\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E7%BA%BF%E4%B8%8A%E9%A2%84%E6%8E%88%E6%9D%83%E5%88%B7%E5%8D%A1%E4%BA%A4%E6%98%93/%E9%A2%84%E6%8E%88%E6%9D%83%E5%AE%8C%E6%88%90",
             "en_link": "/en/api-reference/online-pre-authorization-card-transactions/complete-pre-authorization",
@@ -1213,13 +1141,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -1270,7 +1192,7 @@
         "description": "预授权完成撤销接口（open-api服务）",
         "operationId": "preAuthCompleteCancelOnline",
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=preAuthCompleteCancelOnline\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=preAuthCompleteCancelOnline\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E7%BA%BF%E4%B8%8A%E9%A2%84%E6%8E%88%E6%9D%83%E5%88%B7%E5%8D%A1%E4%BA%A4%E6%98%93/%E9%A2%84%E6%8E%88%E6%9D%83%E5%AE%8C%E6%88%90%E6%92%A4%E9%94%80",
             "en_link": "/en/api-reference/online-pre-authorization-card-transactions/cancel-pre-authorization-completion",
@@ -1288,13 +1210,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -1345,7 +1261,7 @@
         "description": "结算请款接口（open-api服务）",
         "operationId": "batchSettleOnline",
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=batchSettleOnline\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=batchSettleOnline\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E7%BA%BF%E4%B8%8A%E9%A2%84%E6%8E%88%E6%9D%83%E5%88%B7%E5%8D%A1%E4%BA%A4%E6%98%93/%E7%BB%93%E7%AE%97%E8%AF%B7%E6%AC%BE",
             "en_link": "/en/api-reference/online-pre-authorization-card-transactions/batch-settlement",
@@ -1363,13 +1279,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -1420,7 +1330,7 @@
         "description": "请款查询接口（open-api服务）",
         "operationId": "settleQuery",
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=settleQuery\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=settleQuery\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E7%BA%BF%E4%B8%8A%E9%A2%84%E6%8E%88%E6%9D%83%E5%88%B7%E5%8D%A1%E4%BA%A4%E6%98%93/%E8%AF%B7%E6%AC%BE%E6%9F%A5%E8%AF%A2",
             "en_link": "/en/api-reference/online-pre-authorization-card-transactions/settlement-query",
@@ -1438,13 +1348,7 @@
             "$ref": "#/components/parameters/AlgorithmHeader"
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           },
           {
             "$ref": "#/components/parameters/AcceptLanguageHeader"
@@ -1580,7 +1484,7 @@
         "operationId": "createPaymentLink",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -1611,17 +1515,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=createPaymentLink\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=createPaymentLink\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E5%88%9B%E5%BB%BA%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5",
             "en_link": "/en/api-reference/payment-links/create-payment-link",
@@ -1710,7 +1608,7 @@
         "operationId": "queryPaymentLinks",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -1741,17 +1639,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=queryPaymentLinks\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=queryPaymentLinks\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5",
             "en_link": "/en/api-reference/payment-links/list-payment-links",
@@ -1811,7 +1703,7 @@
         "operationId": "getPaymentLinkDetail",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -1842,17 +1734,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=getPaymentLinkDetail\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=getPaymentLinkDetail\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E6%9F%A5%E8%AF%A2%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5%E8%AF%A6%E6%83%85",
             "en_link": "/en/api-reference/payment-links/get-payment-link-details",
@@ -1926,7 +1812,7 @@
         "operationId": "modifyPaymentLink",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -1957,17 +1843,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=modifyPaymentLink\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=modifyPaymentLink\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E4%BF%AE%E6%94%B9%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5",
             "en_link": "/en/api-reference/payment-links/modify-payment-link",
@@ -2029,7 +1909,7 @@
         "operationId": "createPaymentLinkProduct",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -2060,17 +1940,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=createPaymentLinkProduct\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=createPaymentLinkProduct\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E5%88%9B%E5%BB%BA%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5%E5%95%86%E5%93%81",
             "en_link": "/en/api-reference/payment-links/create-payment-link-product",
@@ -2148,7 +2022,7 @@
         "operationId": "queryPaymentLinkProducts",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -2179,17 +2053,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=queryPaymentLinkProducts\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=queryPaymentLinkProducts\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5%E5%95%86%E5%93%81",
             "en_link": "/en/api-reference/payment-links/list-payment-link-products",
@@ -2246,7 +2114,7 @@
         "operationId": "getPaymentLinkProductDetail",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -2277,17 +2145,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=getPaymentLinkProductDetail\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=getPaymentLinkProductDetail\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E6%9F%A5%E8%AF%A2%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85",
             "en_link": "/en/api-reference/payment-links/get-payment-link-product-details",
@@ -2360,7 +2222,7 @@
         "operationId": "modifyPaymentLinkProduct",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -2391,17 +2253,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=modifyPaymentLinkProduct\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=modifyPaymentLinkProduct\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E4%BF%AE%E6%94%B9%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5%E5%95%86%E5%93%81",
             "en_link": "/en/api-reference/payment-links/modify-payment-link-product",
@@ -2503,7 +2359,7 @@
         "operationId": "uploadPaymentLinkImage",
         "servers": [
           {
-            "url": "https://open-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
             "description": "沙箱环境",
             "x-environment": "sandbox"
           },
@@ -2534,17 +2390,11 @@
             }
           },
           {
-            "$ref": "#/components/parameters/AppIdHeader"
-          },
-          {
             "$ref": "#/components/parameters/NonceHeader"
-          },
-          {
-            "$ref": "#/components/parameters/SignatureHeader"
           }
         ],
         "x-mint": {
-          "content": "<Card title=\"在线签名调试\" href=\"/api-tester?operationId=uploadPaymentLinkImage\">使用此接口参数生成请求签名和 cURL。</Card>",
+          "content": "<p className=\"yeahpay-api-utilities\"><a href=\"/api-authentication\">请求授权</a> · <a href=\"/api-tester?operationId=uploadPaymentLinkImage\">在线签名调试</a></p>",
           "metadata": {
             "zh-CN_link": "/api-reference/%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5/%E4%B8%8A%E4%BC%A0%E6%94%AF%E4%BB%98%E9%93%BE%E6%8E%A5%E5%95%86%E5%93%81%E5%9B%BE%E7%89%87",
             "en_link": "/en/api-reference/payment-links/upload-payment-link-product-image",
@@ -6874,7 +6724,7 @@
     "文档标题为 2.1，但修订记录最新一项写作 2.0.1。",
     "生产环境地址由用户确认为 https://open-api.yeahpay.net/acceptance/acceptance-open-api/。",
     "公共参数表规定 version=1.0，而签名示例使用 2.0；本规范采用公共参数表。",
-    "商户 API 统一使用 open-api.yeahpay.net；沙箱入口前缀为 /acceptance/sandbox，接口后缀与生产一致。"
+    "商户 API 的沙箱入口为 https://sandbox-api.yeahpay.net/acceptance/sandbox，生产域名为 https://open-api.yeahpay.net。"
   ],
   "x-embedded-checkout-source": "embedded-checkout-merchant-api-v1.5.md",
   "x-payment-link-source": "payment-link-openapi-v2.yaml"

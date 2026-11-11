@@ -1,10 +1,11 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { apiOperationLinks } from "./api-operation-links.mjs";
 
 const source = JSON.parse(await readFile(new URL("../openapi.json", import.meta.url), "utf8"));
 
 const translations = new Map(Object.entries({
   "沙箱环境": "Sandbox",
-  "商户 API 统一使用 open-api.yeahpay.net；沙箱入口前缀为 /acceptance/sandbox，接口后缀与生产一致。": "Merchant APIs use open-api.yeahpay.net. The sandbox prefix is /acceptance/sandbox, followed by the same operation suffix as production.",
+  "商户 API 的沙箱入口为 https://sandbox-api.yeahpay.net/acceptance/sandbox，生产域名为 https://open-api.yeahpay.net。": "The merchant API sandbox base URL is https://sandbox-api.yeahpay.net/acceptance/sandbox. The production domain is https://open-api.yeahpay.net.",
   "支付意图": "Payment Intents",
   "创建支付意图": "Create PaymentIntent",
   "查询支付意图": "Query PaymentIntent",
@@ -515,7 +516,7 @@ const output = translate(source);
 for (const pathItem of Object.values(output.paths ?? {})) {
   for (const operation of Object.values(pathItem ?? {})) {
     if (!operation?.operationId || !operation["x-mint"]?.content) continue;
-    operation["x-mint"].content = `<Card title="Signed request tester" href="/en/api-tester?operationId=${operation.operationId}">Generate the signature and cURL for this operation.</Card>`;
+    operation["x-mint"].content = apiOperationLinks(operation.operationId, "en");
   }
 }
 

@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
+import { apiOperationLinks } from "./api-operation-links.mjs";
 
 const mode = process.argv[2] ?? "--check";
 if (!new Set(["--check", "--write"]).has(mode)) {
@@ -120,23 +121,18 @@ for (const [, , spec] of localizedSpecs) {
   }
 }
 
-function addTesterLinks(spec, locale) {
+function addOperationLinks(spec, locale) {
   for (const { operation } of operationEntries(spec)) {
-    const hrefPrefix = locale === "zh" ? "/api-tester" : locale === "zh-HK" ? "/zh-hk/api-tester" : "/en/api-tester";
-    const title = locale === "zh" ? "在线签名调试" : locale === "zh-HK" ? "網上簽名測試" : "Signed request tester";
-    const body = locale === "zh"
-      ? "使用此接口参数生成请求签名和 cURL。"
-      : locale === "zh-HK" ? "使用此介面參數產生請求簽名和 cURL。" : "Generate the signature and cURL for this operation.";
     operation["x-mint"] = {
       ...(operation["x-mint"] ?? {}),
-      content: `<Card title="${title}" href="${hrefPrefix}?operationId=${operation.operationId}">${body}</Card>`,
+      content: apiOperationLinks(operation.operationId, locale),
     };
   }
 }
 
-addTesterLinks(zhSpec, "zh");
-addTesterLinks(enSpec, "en");
-if (hkSpec) addTesterLinks(hkSpec, "zh-HK");
+addOperationLinks(zhSpec, "zh-CN");
+addOperationLinks(enSpec, "en");
+if (hkSpec) addOperationLinks(hkSpec, "zh-HK");
 
 const definitions = operationEntries(zhSpec).map(({ path, method, operation }) => {
   const enOperation = enSpec.paths?.[path]?.[method];

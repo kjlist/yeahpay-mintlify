@@ -1,6 +1,7 @@
 import { readFile, readdir, writeFile, mkdir } from "node:fs/promises";
 import assert from "node:assert/strict";
 import { hkText, hkProse } from "./zh-hk-text.mjs";
+import { apiOperationLinks } from "./api-operation-links.mjs";
 
 const root = new URL("../", import.meta.url);
 const check = process.argv.includes("--check");
@@ -18,11 +19,13 @@ for (const item of [...Object.values(source.paths), ...Object.values(source.webh
   }
 }
 const pageNames = new Set(pages.map(name => name.slice(0, -4)));
+const hongKongPage = name => name === "quickstart" ? "index" : name;
 function localLink(value) {
   if (!value.startsWith("/") || value.startsWith("//")) return value;
   const [pathAndQuery, hash] = value.split("#");
   const [path, query] = pathAndQuery.split("?");
-  const localized = routeMap.get(path) ?? (path === "/" ? "/zh-hk" : pageNames.has(path.slice(1)) ? `/zh-hk${path}` : path);
+  const page = path.slice(1);
+  const localized = routeMap.get(path) ?? (page === "quickstart" ? "/zh-hk" : pageNames.has(page) ? `/zh-hk${path}` : path);
   return localized + (query ? `?${query}` : "") + (hash ? `#${hkText(decodeURIComponent(hash))}` : "");
 }
 function mdx(text) {
@@ -53,7 +56,7 @@ function translate(value, key = "", parentKey = "") {
     ]));
   }
   if (typeof value === "string") {
-    if (["description", "summary", "title"].includes(key)) return hkProse(value);
+    if (["description", "summary", "title"].includes(key) || parentKey === "x-enum-descriptions") return hkProse(value);
     if (key === "name" && parentKey === "tags") return hkText(value);
     return value;
   }
@@ -64,6 +67,7 @@ function translate(value, key = "", parentKey = "") {
 const spec = translate(source);
 function protocol(value, key = "") {
   if (["example", "enum", "const", "default", "$ref"].includes(key)) return value;
+  if (key === "x-enum-descriptions") return Object.keys(value);
   if (key === "examples") {
     if (Array.isArray(value)) return value;
     return Object.fromEntries(Object.entries(value).map(([name, example]) => [name,
@@ -81,11 +85,11 @@ for (const path of Object.keys(source.paths)) {
   for (const method of Object.keys(source.paths[path])) {
     const operation = spec.paths[path][method];
     if (!operation?.operationId) continue;
-    operation["x-mint"] = { ...(operation["x-mint"] ?? {}), content: `<Card title="網上簽名測試" href="/zh-hk/api-tester?operationId=${operation.operationId}">使用此介面參數產生請求簽名和 cURL。</Card>` };
+    operation["x-mint"] = { ...(operation["x-mint"] ?? {}), content: apiOperationLinks(operation.operationId, "zh-HK") };
   }
 }
 const outputs = new Map([["openapi-zh-hk.json", `${JSON.stringify(spec, null, 2)}\n`]]);
-for (const page of pages) outputs.set(`zh-hk/${page}`, mdx(await readFile(new URL(page, root), "utf8")));
+for (const page of pages) outputs.set(`zh-hk/${hongKongPage(page.slice(0, -4))}.mdx`, mdx(await readFile(new URL(page, root), "utf8")));
 const snippetPath = "snippets/signed-api-playground.jsx";
 const snippet = await readFile(new URL(snippetPath, root), "utf8");
 const start = "    // BEGIN AUTO-GENERATED HONG KONG TEXT";

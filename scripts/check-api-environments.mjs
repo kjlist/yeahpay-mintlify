@@ -25,8 +25,10 @@ const signingUrlFor = new Function("endpointFor", `return ${between("  const sig
 const toBase64 = new Function(`return ${between("  const toBase64 = ", jsx.includes("  const endpointFor = ") ? "  const endpointFor" : "  const signingUrlFor")}`)();
 const signer = new Function("context", `const { appId, appKey, rawBody, text, environment, selectedOperationId, operationForId, environmentsFor, signingUrlFor, endpointFor, createNonce, toBase64, setError, setGenerating, setResult } = context; return (${between("  const generateSignature = ", "  const selectedOperation = ")})();`);
 const checkoutIds = new Set(["getRedirectUrl", "createIntent", "queryIntentStatus"]);
-const domain = "https://open-api.yeahpay.net";
+const productionDomain = "https://open-api.yeahpay.net";
+const sandboxDomain = "https://sandbox-api.yeahpay.net";
 const expected = (operation, environment) => {
+  const domain = environment === "sandbox" ? sandboxDomain : productionDomain;
   const prefix = environment === "sandbox" ? "/acceptance/sandbox" : checkoutIds.has(operation.operationId) ? "/gwp/checkout" : "/acceptance/acceptance-open-api";
   const signingPrefix = environment === "sandbox" ? "/sandbox" : checkoutIds.has(operation.operationId) ? "/checkout" : "/acceptance-open-api";
   return { endpoint: `${domain}${prefix}${operation.path}`, signUrl: `${signingPrefix}${operation.path}` };
@@ -87,7 +89,7 @@ for (const operation of operations) {
 if (publicMode) {
   assert.ok(!jsx.includes("https://t-acquire-business.lepass.cn"));
   assert.match(jsx, /\[environment, setEnvironment\] = useState\("sandbox"\)/);
-  assert.equal(signingUrlFor(`${domain}/gwp/checkout/`, "/openapi/v2/createIntent"), "/checkout/openapi/v2/createIntent");
+  assert.equal(signingUrlFor(`${productionDomain}/gwp/checkout/`, "/openapi/v2/createIntent"), "/checkout/openapi/v2/createIntent");
   // Execute each published JavaScript signing example with a local fetch stub.
   for (const page of ["signature.mdx", "en/signature.mdx", "zh-hk/signature.mdx"]) {
     const markdown = await readFile(new URL(page, root), "utf8");
@@ -104,7 +106,7 @@ if (publicMode) {
     };
     await new Function("createHash", "randomUUID", "process", "fetch", "console", `return (async () => {${body}\n})();`)(
       createHash, randomUUID, { env: { YEAHPAY_APP_ID: appId, YEAHPAY_API_KEY: apiKey } }, fetch, { log: () => {} });
-    assert.equal(captured.url, `${domain}/acceptance/sandbox/consent-payment/customers/query`, page);
+    assert.equal(captured.url, `${sandboxDomain}/acceptance/sandbox/consent-payment/customers/query`, page);
     const { headers } = captured.request;
     const signText = ["/sandbox/consent-payment/customers/query", appId, headers.timestamp, headers.version, headers.nonce, captured.request.body, apiKey].join("\n");
     assert.equal(headers.signature, createHash("sha512").update(signText, "utf8").digest("base64"), page);

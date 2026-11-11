@@ -159,7 +159,7 @@ Codex 和 Claude Code 共用 `scripts/hooks/` 下的 hook 实现：
 | 路径 | 用途 |
 | --- | --- |
 | `docs.json` | Mintlify 站点、双语导航和主题配置 |
-| `index.mdx`、`signature.mdx`、`api-tester.mdx` | 中文接入文档 |
+| `quickstart.mdx`、`signature.mdx`、`api-tester.mdx` | 中文接入文档 |
 | `embedded-checkout.mdx`、`embedded-checkout-sdk.mdx` | 嵌入式收银台流程和前端 SDK 接入；英文对应页位于 `en/` |
 | `en/` | 英文接入文档 |
 | `openapi.json` | 中文 OpenAPI 唯一事实来源 |

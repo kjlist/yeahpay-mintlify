@@ -149,7 +149,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
     },
   }
   // BEGIN AUTO-GENERATED OPENAPI OPERATIONS
-  // Source fingerprint: bf45714bbdd1fc0e
+  // Source fingerprint: 19911abe24a99dcd
   const operationDefinitions = [
     {
       "operationId": "getRedirectUrl",
@@ -159,7 +159,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Get Unified Checkout URL",
       "summaryHk": "取得統一收銀台地址",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/gwp/checkout"
       },
       "sampleBody": {
@@ -193,7 +193,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Create PaymentIntent",
       "summaryHk": "建立支付意圖",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/gwp/checkout"
       },
       "sampleBody": {
@@ -220,7 +220,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Query PaymentIntent",
       "summaryHk": "查詢支付意圖",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/gwp/checkout"
       },
       "sampleBody": {
@@ -236,7 +236,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Create customer",
       "summaryHk": "建立客戶",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -264,7 +264,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Update customer",
       "summaryHk": "更新客戶",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -293,7 +293,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Query customer",
       "summaryHk": "查詢客戶",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -310,7 +310,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Query customer consents",
       "summaryHk": "查詢客戶授權",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -330,7 +330,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Query consent",
       "summaryHk": "查詢授權",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -348,7 +348,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Cancel consent",
       "summaryHk": "取消授權",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -365,7 +365,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Reactivate consent",
       "summaryHk": "重新啓用授權",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -382,7 +382,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "List charges",
       "summaryHk": "查詢扣款列表",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -402,7 +402,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Unified reversal or refund",
       "summaryHk": "統一撤銷或退款",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -427,7 +427,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Complete Pre-Authorization",
       "summaryHk": "預授權完成",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -446,7 +446,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Cancel Pre-Authorization Completion",
       "summaryHk": "預授權完成撤銷",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -465,7 +465,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Batch Settlement",
       "summaryHk": "結算請款",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -481,7 +481,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Settlement Query",
       "summaryHk": "請款查詢",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -498,7 +498,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Create Payment Link",
       "summaryHk": "建立支付連結",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -521,7 +521,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "List Payment Links",
       "summaryHk": "分頁查詢支付連結",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -545,7 +545,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Get Payment Link Details",
       "summaryHk": "查詢支付連結詳情",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -564,7 +564,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Modify Payment Link",
       "summaryHk": "修改支付連結",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -584,7 +584,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Create Payment Link Product",
       "summaryHk": "建立支付連結商品",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -605,7 +605,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "List Payment Link Products",
       "summaryHk": "分頁查詢支付連結商品",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -622,7 +622,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Get Payment Link Product Details",
       "summaryHk": "查詢支付連結商品詳情",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -638,7 +638,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Modify Payment Link Product",
       "summaryHk": "修改支付連結商品",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {
@@ -657,7 +657,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Upload Payment Link Product Image",
       "summaryHk": "上傳支付連結商品圖片",
       "serverUrls": {
-        "sandbox": "https://open-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
         "production": "https://open-api.yeahpay.net/acceptance/acceptance-open-api"
       },
       "sampleBody": {

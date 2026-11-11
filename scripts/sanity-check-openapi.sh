@@ -14,9 +14,10 @@ source_spec="$root/openapi.json"
 english_spec="$root/openapi-en.json"
 playground="$root/snippets/signed-api-playground.jsx"
 build_script="$root/scripts/build-openapi-en.mjs"
+links_script="$root/scripts/api-operation-links.mjs"
 sync_script="$root/scripts/sync-signed-api-playground.mjs"
 
-for required_file in "$source_spec" "$english_spec" "$playground" "$build_script" "$sync_script"; do
+for required_file in "$source_spec" "$english_spec" "$playground" "$build_script" "$links_script" "$sync_script"; do
   if [[ ! -f "$required_file" ]]; then
     echo "Required file is missing: $required_file" >&2
     exit 1
@@ -27,7 +28,7 @@ temp_dir="$(mktemp -d "${TMPDIR:-/tmp}/yeahpay-openapi-sanity.XXXXXX")"
 trap 'rm -rf "$temp_dir"' EXIT
 mkdir -p "$temp_dir/scripts"
 cp "$source_spec" "$temp_dir/openapi.json"
-cp "$build_script" "$temp_dir/scripts/build-openapi-en.mjs"
+cp "$build_script" "$links_script" "$temp_dir/scripts/"
 
 "$node_bin" "$temp_dir/scripts/build-openapi-en.mjs"
 

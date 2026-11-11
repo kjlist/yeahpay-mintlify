@@ -39,7 +39,7 @@ signature = Base64(SHA-512(UTF-8(signText)))
 
 ```text
 沙盒請求地址：
-https://open-api.yeahpay.net/acceptance/sandbox/consent-payment/customers/query
+https://sandbox-api.yeahpay.net/acceptance/sandbox/consent-payment/customers/query
 
 簽名 URL：
 /sandbox/consent-payment/customers/query
@@ -78,7 +78,7 @@ https://open-api.yeahpay.net/gwp/checkout/openapi/v2/createIntent
     import { createHash, randomUUID } from "node:crypto";
 
     const baseUrl =
-      "https://open-api.yeahpay.net";
+      "https://sandbox-api.yeahpay.net";
     const path = "/acceptance/sandbox/consent-payment/customers/query";
     const appId = process.env.YEAHPAY_APP_ID;
     const apiKey = process.env.YEAHPAY_API_KEY;
@@ -148,7 +148,7 @@ https://open-api.yeahpay.net/gwp/checkout/openapi/v2/createIntent
     import java.util.UUID;
 
     String baseUrl =
-        "https://open-api.yeahpay.net";
+        "https://sandbox-api.yeahpay.net";
     String path = "/acceptance/sandbox/consent-payment/customers/query";
     String appId = System.getenv("YEAHPAY_APP_ID");
     String apiKey = System.getenv("YEAHPAY_API_KEY");

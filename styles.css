@@ -1,0 +1,20 @@
+/* Merchant endpoint pages link to the shared authorization guide.
+   Keep the OpenAPI definitions available to examples and the Try it form. */
+#content-container .mdx-content:has(.yeahpay-api-utilities) .api-section > .primitive-param-field:has(:is(
+  #authorization-app-id, #authorization-signature,
+  #parameter-app-id, #parameter-signature, #parameter-version,
+  #parameter-timestamp, #parameter-nonce, #parameter-algorithm,
+  #parameter-accept-language, #parameter-accept-timezone
+)) {
+  display: none;
+}
+
+/* Hide the section when all of its fields are documented in the shared guide. */
+#content-container .mdx-content:has(.yeahpay-api-utilities) .api-section:has(:is(#authorization-app-id, #parameter-version)):not(:has(
+  [id^="authorization-"]:not(#authorization-app-id, #authorization-signature),
+  [id^="parameter-"]:not(#parameter-app-id, #parameter-signature, #parameter-version,
+    #parameter-timestamp, #parameter-nonce, #parameter-algorithm,
+    #parameter-accept-language, #parameter-accept-timezone)
+)) {
+  display: none;
+}

@@ -11,8 +11,73 @@
   "navigation": {
     "languages": [
       {
-        "language": "zh-CN",
+        "language": "en",
         "default": true,
+        "tabs": [
+          {
+            "tab": "Get Started",
+            "groups": [
+              {
+                "group": "Integration guide",
+                "pages": [
+                  "en/index",
+                  "en/signature",
+                  "en/api-tester"
+                ]
+              },
+              {
+                "group": "Product integration",
+                "pages": [
+                  "en/unified-checkout-integration",
+                  "en/embedded-checkout-integration",
+                  "en/embedded-checkout-sdk",
+                  "en/payment-link-integration",
+                  "en/subscription-payment-integration"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Products",
+            "groups": [
+              {
+                "group": "Overview",
+                "pages": ["en/payment-products"]
+              },
+              {
+                "group": "Payment products",
+                "pages": [
+                  "en/unified-checkout",
+                  "en/embedded-checkout",
+                  "en/payment-link",
+                  "en/agentpay"
+                ]
+              },
+              {
+                "group": "Payment scenarios",
+                "pages": [
+                  "en/subscription-payment"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API reference",
+            "groups": [
+              {
+                "group": "Integration",
+                "pages": ["en/api-authentication"]
+              }
+            ],
+            "openapi": {
+              "source": "openapi-en.json",
+              "directory": "en/api-reference"
+            }
+          }
+        ]
+      },
+      {
+        "language": "zh-CN",
         "tabs": [
           {
             "tab": "快速开始",
@@ -20,9 +85,19 @@
               {
                 "group": "接入指南",
                 "pages": [
-                  "index",
+                  "quickstart",
                   "signature",
                   "api-tester"
+                ]
+              },
+              {
+                "group": "产品接入",
+                "pages": [
+                  "unified-checkout-integration",
+                  "embedded-checkout-integration",
+                  "embedded-checkout-sdk",
+                  "payment-link-integration",
+                  "subscription-payment-integration"
                 ]
               }
             ]
@@ -31,11 +106,16 @@
             "tab": "产品介绍",
             "groups": [
               {
+                "group": "产品概览",
+                "pages": ["payment-products"]
+              },
+              {
                 "group": "支付产品",
                 "pages": [
                   "unified-checkout",
                   "embedded-checkout",
-                  "payment-link"
+                  "payment-link",
+                  "agentpay"
                 ]
               },
               {
@@ -43,17 +123,17 @@
                 "pages": [
                   "subscription-payment"
                 ]
-              },
-              {
-                "group": "API",
-                "pages": [
-                  "embedded-checkout-sdk"
-                ]
               }
             ]
           },
           {
             "tab": "API文档",
+            "groups": [
+              {
+                "group": "接入说明",
+                "pages": ["api-authentication"]
+              }
+            ],
             "openapi": {
               "source": "openapi.json",
               "directory": "api-reference"
@@ -74,6 +154,16 @@
                   "zh-hk/signature",
                   "zh-hk/api-tester"
                 ]
+              },
+              {
+                "group": "產品接入",
+                "pages": [
+                  "zh-hk/unified-checkout-integration",
+                  "zh-hk/embedded-checkout-integration",
+                  "zh-hk/embedded-checkout-sdk",
+                  "zh-hk/payment-link-integration",
+                  "zh-hk/subscription-payment-integration"
+                ]
               }
             ]
           },
@@ -81,11 +171,16 @@
             "tab": "產品介紹",
             "groups": [
               {
+                "group": "產品概覽",
+                "pages": ["zh-hk/payment-products"]
+              },
+              {
                 "group": "支付產品",
                 "pages": [
                   "zh-hk/unified-checkout",
                   "zh-hk/embedded-checkout",
-                  "zh-hk/payment-link"
+                  "zh-hk/payment-link",
+                  "zh-hk/agentpay"
                 ]
               },
               {
@@ -93,70 +188,20 @@
                 "pages": [
                   "zh-hk/subscription-payment"
                 ]
-              },
-              {
-                "group": "API",
-                "pages": [
-                  "zh-hk/embedded-checkout-sdk"
-                ]
               }
             ]
           },
           {
             "tab": "API文件",
+            "groups": [
+              {
+                "group": "接入說明",
+                "pages": ["zh-hk/api-authentication"]
+              }
+            ],
             "openapi": {
               "source": "openapi-zh-hk.json",
               "directory": "zh-hk/api-reference"
-            }
-          }
-        ]
-      },
-      {
-        "language": "en",
-        "tabs": [
-          {
-            "tab": "Get Started",
-            "groups": [
-              {
-                "group": "Integration guide",
-                "pages": [
-                  "en/index",
-                  "en/signature",
-                  "en/api-tester"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Product Description",
-            "groups": [
-              {
-                "group": "Payment products",
-                "pages": [
-                  "en/unified-checkout",
-                  "en/embedded-checkout",
-                  "en/payment-link"
-                ]
-              },
-              {
-                "group": "Payment scenarios",
-                "pages": [
-                  "en/subscription-payment"
-                ]
-              },
-              {
-                "group": "API",
-                "pages": [
-                  "en/embedded-checkout-sdk"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API reference",
-            "openapi": {
-              "source": "openapi-en.json",
-              "directory": "en/api-reference"
             }
           }
         ]
@@ -171,13 +216,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:vito@yeahka.com"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "href": "https://h5.leshuazf.com/wap/yeahpay-shop-management/#/login"
     }
   },
   "contextual": {
