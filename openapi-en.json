@@ -2931,47 +2931,23 @@
         ],
         "allOf": [
           {
-            "anyOf": [
-              {
-                "required": [
-                  "customerId"
-                ]
-              },
-              {
-                "required": [
-                  "merchantCustomerId"
-                ]
+            "not": {
+              "properties": {
+                "customerId": false,
+                "merchantCustomerId": false
               }
-            ]
+            }
           },
           {
-            "anyOf": [
-              {
-                "required": [
-                  "firstName"
-                ]
-              },
-              {
-                "required": [
-                  "lastName"
-                ]
-              },
-              {
-                "required": [
-                  "email"
-                ]
-              },
-              {
-                "required": [
-                  "phone"
-                ]
-              },
-              {
-                "required": [
-                  "address"
-                ]
+            "not": {
+              "properties": {
+                "firstName": false,
+                "lastName": false,
+                "email": false,
+                "phone": false,
+                "address": false
               }
-            ]
+            }
           }
         ],
         "description": "In addition to a customer lookup field, provide at least one non-empty field to update."

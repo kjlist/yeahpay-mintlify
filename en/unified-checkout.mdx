@@ -6,18 +6,37 @@ en_link: "/en/unified-checkout"
 zh-Hant_link: "/zh-hk/unified-checkout"
 ---
 
-Unified Checkout brings multiple payment methods to your website or app through a YeahPay hosted page. Buyers review their order, select a payment method, and pay on that page. They can then return to your site or app.
+## Product overview
 
-## Product features
+Unified Checkout is a hosted checkout service for merchants worldwide. With one integration, merchants can accept major global payment methods such as credit cards, local wallets, and bank transfers. Buyers are redirected to the hosted page to pay. YeahPay collects and processes sensitive payment information, reducing merchants' PCI DSS compliance costs.
 
-- **Multiple payment methods.** Accept cards and local wallets, including Visa, Mastercard, American Express, WeChat Pay, and Alipay. Octopus is available on mobile in Hong Kong. Buyers see the methods available in their region and enabled for your account.
-- **Desktop and mobile checkout.** Open the same checkout from a desktop browser, mobile browser, or app. The checkout is available in Simplified Chinese, Traditional Chinese, English, and Japanese.
-- **Card details handled by YeahPay.** YeahPay collects and processes the card number and security code on its hosted page.
+## Key features and benefits
 
-## Use cases
+- **Multiple payment methods through one integration**. Accept credit cards (Visa, Mastercard, and Amex), WeChat Pay, Alipay, bank transfers, and other major global payment methods through one set of APIs.
+- **Responsive checkout**. The page detects desktop and mobile access and adapts to the screen size.
+- **Multiple languages**. Buyers can switch between Simplified Chinese, Traditional Chinese, English, and Japanese on the checkout page.
+- **Intelligent payment routing**. Payment methods are ranked dynamically using merchant settings, region, and historical success rates to improve conversion.
+- **Lower PCI DSS compliance costs**. Sensitive data such as card numbers and CVVs is processed on the checkout page and never passes through the merchant's system.
+- **Built-in security and risk controls**. End-to-end HTTPS, replay protection, and a reviewed domain allowlist help block unauthorized sources and fraudulent transactions.
+- **High availability**. System availability of at least 99.95% and peak capacity of at least 1,000 TPS keep payments stable during major promotions.
 
-An online store can send buyers to a hosted page to pay for an order. Merchants selling in multiple markets can offer cards alongside the wallets their customers use locally.
+## Integration flow
 
-<Card title="Unified Checkout integration guide" icon="book-open" href="/en/unified-checkout-integration">
-  Learn how to open hosted checkout and confirm payment results.
-</Card>
+1. **Onboard and configure your account**. Complete merchant onboarding, obtain your `merchantId` and `apiKey`, and submit the domain that will redirect buyers to checkout for allowlist approval.
+2. **Request a checkout URL**. Sign and send the order details, including the amount, currency, product information, and callback URL. The API returns a unique checkout URL and a payment intent ID.
+3. **Redirect the buyer to checkout**. Send the buyer to the checkout URL. The page detects the browsing environment and displays the corresponding product details and available payment methods.
+4. **The buyer pays**. The buyer chooses a payment method and submits the payment. Checkout and the payment provider handle verification and collection.
+5. **Receive the payment result**. YeahPay sends a signed callback with the result (success, failure, or cancellation). Update your order status using this notification.
+6. **Redirect the buyer to the result page**. Checkout sends the buyer to your configured results page. If you have not configured one, checkout displays its built-in results page.
+
+## Frequently asked questions
+
+**How long is a checkout URL valid?** The default is 24 hours and merchants can configure it. When it expires, call the API again for a new checkout URL.
+
+**Can a buyer retry after a payment fails?** Yes. The buyer can retry with the same payment method or switch to another one. There is no retry limit before the order expires after two hours.
+
+**Do merchants need to store or process card numbers?** No. Checkout collects and processes sensitive information such as card numbers and CVVs. It never passes through the merchant's system. YeahPay takes responsibility for the associated PCI DSS compliance.
+
+**Are there any restrictions on redirecting to checkout?** The domain that redirects buyers to checkout must be reviewed and allowlisted in advance. Checkout blocks unapproved or invalid sources and requests with a missing Referer header.
+
+**Which regions and payment methods are supported?** Unified Checkout currently supports merchants in Hong Kong and Singapore, with card payments (Visa, Mastercard, and Amex), WeChat Pay, and Alipay. Octopus is also available on mobile in Hong Kong. More options will be added over time.

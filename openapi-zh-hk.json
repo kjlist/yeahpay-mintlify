@@ -2931,47 +2931,23 @@
         ],
         "allOf": [
           {
-            "anyOf": [
-              {
-                "required": [
-                  "customerId"
-                ]
-              },
-              {
-                "required": [
-                  "merchantCustomerId"
-                ]
+            "not": {
+              "properties": {
+                "customerId": false,
+                "merchantCustomerId": false
               }
-            ]
+            }
           },
           {
-            "anyOf": [
-              {
-                "required": [
-                  "firstName"
-                ]
-              },
-              {
-                "required": [
-                  "lastName"
-                ]
-              },
-              {
-                "required": [
-                  "email"
-                ]
-              },
-              {
-                "required": [
-                  "phone"
-                ]
-              },
-              {
-                "required": [
-                  "address"
-                ]
+            "not": {
+              "properties": {
+                "firstName": false,
+                "lastName": false,
+                "email": false,
+                "phone": false,
+                "address": false
               }
-            ]
+            }
           }
         ],
         "description": "除客戶定位字段外，至少提供一個非空更新字段。"

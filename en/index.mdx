@@ -6,7 +6,7 @@ en_link: "/en"
 zh-Hant_link: "/zh-hk"
 ---
 
-YeahPay provides payment, query, refund, and checkout APIs over HTTPS with JSON payloads. Before you start, request an `appId` and `apiKey` from YeahPay.
+YeahPay provides payment, query, refund, and checkout APIs over HTTPS with JSON payloads.
 
 ## Environment URLs
 
@@ -28,8 +28,8 @@ See [Request Authentication](/en/api-authentication) for application credentials
 ## Integration flow
 
 <Steps>
-  <Step title="Request sandbox credentials">
-    Get an `appId` and `apiKey` for the sandbox environment. Store them securely in your server-side configuration.
+  <Step title="Sign in to the sandbox dashboard and create credentials">
+    Sign in to the sandbox merchant dashboard on a computer. Create an `appId` and `apiKey` there, then store them securely in your server-side configuration.
   </Step>
   <Step title="Generate the signature">
     Serialize the request body once. Use the same raw JSON string to calculate the signature and send the request. See [Signature rules and examples](/en/signature).
@@ -38,7 +38,7 @@ See [Request Authentication](/en/api-authentication) for application credentials
     Verify payments, queries, reversal transactions, and asynchronous notifications. After processing a payment or refund notification successfully, return `success` as the response body.
   </Step>
   <Step title="Switch to production">
-    Select Production on the API page and use the full request URL on `https://open-api.yeahpay.net` with your production credentials.
+    Select Production on the API page. Use the full request URL on `https://open-api.yeahpay.net` with your production credentials from the [production merchant dashboard](https://payment.yeahpay.net/merchant/system/#/).
   </Step>
 </Steps>
 

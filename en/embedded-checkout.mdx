@@ -6,18 +6,42 @@ en_link: "/en/embedded-checkout"
 zh-Hant_link: "/zh-hk/embedded-checkout"
 ---
 
-Embedded Checkout places a card payment component on your own checkout page. Buyers can enter or select a card and complete 3D Secure verification when required, within your checkout flow.
+Let buyers pay on your own page without redirecting away, so fewer buyers drop off and repeat purchases are easier.
 
-## Product features
+## Product overview
 
-- **Payment on your own page.** Choose where the checkout component appears. The YeahPay component collects and processes card numbers, expiry dates, and security codes.
-- **Save and reuse cards.** Buyers can save a card during payment or add one separately, then select a saved card on a future purchase.
-- **Immediate charges and preauthorization.** Charge at order confirmation, or reserve an amount and capture it after providing the service.
+Embedded Checkout is a payment component you embed directly on your own page. Buyers can enter card details, complete 3D Secure (3DS) verification, and confirm payment without leaving your domain. Checkout collects and processes sensitive data such as card numbers, expiry dates, and CVVs. This data never passes through the merchant's system. YeahPay takes responsibility for the associated PCI DSS compliance.
 
-## Use cases
+Unified Checkout redirects buyers to a hosted page. Embedded Checkout keeps the checkout experience on your page, which suits businesses that prioritize conversion and a consistent brand experience.
 
-An online store can keep payment in its existing checkout and offer saved cards to repeat buyers. Hotels and rental businesses can use preauthorization to reserve funds before providing a service.
+## Key features and benefits
 
-<Card title="Embedded Checkout integration guide" icon="book-open" href="/en/embedded-checkout-integration">
-  Review PaymentIntents, the frontend SDK, and the capabilities of the currently documented API.
-</Card>
+- **On-page checkout without redirects**. Embed the component anywhere on your page. Buyers stay on your domain throughout payment. The target checkout load success rate is at least 99%.
+- **Isolated card fields and PCI SAQ A scope**. YeahPay renders and encrypts the card number, expiry date, and CVV in isolated fields. The merchant page and surrounding scripts cannot read card details, and the security code is never stored.
+- **Saved cards for repeat purchases**. Buyers can save cards during payment and use them for one-click repeat purchases. Each buyer can save up to 20 cards. YeahPay handles the full lifecycle, including saving, querying, and deactivating cards.
+- **Built-in 3DS verification**. Card-network authentication happens within the component, keeping buyers on your page. This supports regions such as the EU and UK where 3DS is required.
+- **Final authorization and preauthorization**. Use Final Auth to charge immediately or Pre Auth to authorize and capture later for use cases such as hotels, car rentals, and deposits.
+- **Real-time status events**. Checkout sends events to your frontend when it loads, when payment ends, or when an error occurs. Use server-side queries or asynchronous notifications to confirm the result before fulfillment.
+
+## Integration flow
+
+1. **Create a Payment Intent**. Your server sends the amount, currency, merchant order number, and other details to the creation API. It receives a Payment Intent ID and a Payment Intent Token.
+2. **Pass the checkout credentials to the frontend**. Your server sends the Payment Intent ID and Payment Intent Token to the page. Server-side credentials stay on your server.
+3. **Load and mount checkout**. Load the YeahPay checkout script, initialize it with the token, and mount it in the target container. The component displays the available payment methods and the buyer's saved cards.
+4. **The buyer pays**. The buyer enters card details and submits payment. If the payment provider requires 3DS verification, the buyer completes it within the component.
+5. **Receive the payment result**. Checkout notifies the frontend so it can navigate to the appropriate page. Update the order status using a server-side Payment Intent query or an asynchronous notification.
+6. **Issue a refund if needed**. Call the refund API with the Payment Intent ID or merchant order number. The existing refund system handles the refund or reversal.
+
+## Frequently asked questions
+
+**How long is a Payment Intent Token valid?** It has the same lifecycle as its Payment Intent, which is valid for 24 hours by default. The token does not expire separately and does not need renewal. Once the Payment Intent expires, create a new order and reload checkout with a new token.
+
+**Can a buyer retry after a payment fails?** Yes. The buyer can retry or change payment methods on the same Payment Intent. Up to 10 retries are allowed before the Payment Intent expires after 24 hours.
+
+**Do merchants need to store or process card numbers?** No. The checkout component collects and processes card numbers, expiry dates, and security codes. They never pass through the merchant's system. YeahPay takes responsibility for the associated PCI DSS compliance.
+
+**Are there any restrictions on embedding checkout?** Load the checkout script directly from the YeahPay domain. Your page must use HTTPS, and its domain must be registered and approved in the merchant dashboard. Checkout rejects requests from unregistered domains.
+
+**Can buyers save more than one card?** Yes. Each buyer can save up to 20 cards. When that limit is exceeded, the least recently used card is removed. Expired cards remain visible but cannot be selected.
+
+**Which payment methods are currently supported?** This release supports card payments only, including Visa, Mastercard, and Amex, subject to your merchant agreement. Wallets and local payment methods are currently unavailable.

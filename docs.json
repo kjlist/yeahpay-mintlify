@@ -222,7 +222,7 @@
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://h5.leshuazf.com/wap/yeahpay-shop-management/#/login"
+      "href": "https://payment.yeahpay.net/merchant/system/#/"
     }
   },
   "contextual": {

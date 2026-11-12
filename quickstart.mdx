@@ -6,7 +6,7 @@ en_link: "/en"
 zh-Hant_link: "/zh-hk"
 ---
 
-YeahPay API 使用 HTTPS 和 JSON 提供支付、查询、退款及收银台服务。开始对接前，请先向 YeahPay 获取 `appId` 和 `apiKey`。
+YeahPay API 使用 HTTPS 和 JSON 提供支付、查询、退款及收银台服务。
 
 ## 环境地址
 
@@ -28,8 +28,8 @@ YeahPay API 使用 HTTPS 和 JSON 提供支付、查询、退款及收银台服�
 ## 对接流程
 
 <Steps>
-  <Step title="申请沙箱凭证">
-    获取沙箱环境的 `appId` 和 `apiKey`。请分别保存在安全的服务端配置中。
+  <Step title="登录沙箱商户后台并创建凭证">
+    先登录沙箱环境的 PC 端商户后台，再在后台创建 `appId` 和 `apiKey`，并将凭证安全地保存在服务端配置中。
   </Step>
   <Step title="生成签名">
     序列化请求体一次，使用同一份原始 JSON 计算签名并发送请求。查看[签名规则与示例](/signature)。
@@ -38,7 +38,7 @@ YeahPay API 使用 HTTPS 和 JSON 提供支付、查询、退款及收银台服�
     验证支付、查询、逆向交易和异步通知。支付或退款通知处理成功后，响应 Body 必须返回 `success`。
   </Step>
   <Step title="切换生产环境">
-    在接口文档选择生产环境，使用 `https://open-api.yeahpay.net` 下的完整请求地址和生产环境凭证。
+    在接口文档选择生产环境，使用 `https://open-api.yeahpay.net` 下的完整请求地址和[生产商户后台](https://payment.yeahpay.net/merchant/system/#/)的生产环境凭证。
   </Step>
 </Steps>
 

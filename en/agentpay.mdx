@@ -8,7 +8,6 @@ zh-Hant_link: "/zh-hk/agentpay"
 
 - **Document type** Product Overview
 - **Version** V1.0
-- **Date** 2026-11-09
 - **Audience** Merchants, agent platforms, API providers, and channel partners
 - **Protocols** AP2, ACP, UCP, x402, MPP, Visa TAP, and Mastercard Agent Pay
 - **Custody** A licensed Web3 wallet custodian holds stablecoins. Card networks authorize and clear fiat card payments.
@@ -25,7 +24,15 @@ Agent Pay addresses three problems in agent payments.
 | Protocols such as AP2, ACP, and x402 are fragmented | One API brings together AP2, ACP, UCP, x402, MPP, Visa TAP, and Mastercard Agent Pay and maps them to a common payment intent. |
 | Recording each micropayment on-chain can cost more than the payment itself | Off-chain recording and on-chain net settlement make payments as small as USD 0.01 economically viable. |
 
-Agent Pay supports stablecoin prefunding and credit card spending limits. It supports USDC, USDT, USDG, and XSGD across networks including Base, BSC, Ethereum, and Solana. Know Your Agent (KYA) checks an agent's eligibility and Intent Guard checks payment intent. Merchants can use a custodial wallet by default or connect their own Web3 wallet. Activity records support reconciliation, audits, and merchant marketing.
+### Core capabilities
+
+- **Two funding options**. Stablecoin prefunding and credit card spending limits.
+- **Multiple currencies and networks**. USDC, USDT, USDG, and XSGD across networks including Base, BSC, Ethereum, and Solana.
+- **Agent security**. Know Your Agent (KYA) checks agent eligibility. Intent Guard checks payment intent.
+- **Two merchant wallet options**. Merchants can use the default custodial wallet or connect their own Web3 wallet.
+- **Activity records**. Support reconciliation, audits, and merchant marketing.
+
+### Two product lines
 
 - **Agent Pay-in for accepting payments from agents.** API, MCP, content, and compute providers can accept payments from agents through one integration.
 - **Agent Pay-out for delegated purchases.** A business can authorize an agent to buy within specified limits and rules while retaining audit and reconciliation records.
@@ -45,7 +52,7 @@ Agent Pay applies the card network model of authorization, clearing, and settlem
 
 An agent payment passes through four stages. The user authorizes the agent once at the first stage. Payment and settlement then proceed automatically.
 
-<Frame caption="How Agent Pay completes a payment (original diagram)">
+<Frame caption="How an Agent Pay Payment Works">
   <img src="/images/agentpay/payment-flow.png" alt="Agent Pay flow from user authorization through the YeahPay gateway and custody to merchant settlement" />
 </Frame>
 
