@@ -1,125 +1,45 @@
 ---
-title: "AgentPay"
-description: "One preauthorization for autonomous agent payments, with multiple chains and currencies and two funding options: stablecoins and credit cards"
+title: "Agent Pay"
+sidebarTitle: "AgentPay"
+description: "Accept payments from AI Agents — one integration, settled daily."
 zh-CN_link: "/agentpay"
 en_link: "/en/agentpay"
 zh-Hant_link: "/zh-hk/agentpay"
 ---
 
-- **Document type** Product Overview
-- **Version** V1.0
-- **Audience** Merchants, agent platforms, API providers, and channel partners
-- **Protocols** AP2, ACP, UCP, x402, MPP, Visa TAP, and Mastercard Agent Pay
-- **Custody** A licensed Web3 wallet custodian holds stablecoins. Card networks authorize and clear fiat card payments.
+**YEAHPAY  AGENTPAY**
 
-## 1. Product overview
+Product Brief
 
-Agent Pay provides payment and ledger services for AI agents. A user preauthorizes funds once through a Web3 wallet or authorizes a fiat spending limit on a credit card through a card network. The agent can then pay within that limit. YeahPay records payments on a centralized ledger and confirms them in real time. A licensed Web3 wallet custodian holds stablecoin funds and handles final settlement.
+## Accept payments from AI Agents
 
-Agent Pay addresses three problems in agent payments.
+**Your customers are becoming AI Agents.** Agents book, buy and pay on behalf of users — automatically, inside chatbots and apps. Agent Pay lets your business accept those payments with one integration: no account sign-ups, no card flows, no subscription plumbing.
 
-| Problem | How Agent Pay handles it |
+**Authorize once — your AI Agent pays automatically within your limits.** Funds are held by a licensed custodian; merchants settle daily.
+
+<img src="/images/agentpay/payment-flow.png" alt="Agent Pay flow from user authorization through the YeahPay gateway and custody to merchant settlement" />
+
+## Who it's for
+
+| Customer | What they get |
 | --- | --- |
-| Users must be present to sign each payment | One preauthorization covers multiple payments. Users can set the total amount, expiry, merchant scope, and per-payment limit, and revoke authorization at any time. |
-| Protocols such as AP2, ACP, and x402 are fragmented | One API brings together AP2, ACP, UCP, x402, MPP, Visa TAP, and Mastercard Agent Pay and maps them to a common payment intent. |
-| Recording each micropayment on-chain can cost more than the payment itself | Off-chain recording and on-chain net settlement make payments as small as USD 0.01 economically viable. |
+| **API, MCP & compute providers** | Sell to machine customers — paid per call, no subscriptions needed |
+| **Merchants & brands** | Accept payments inside chatbots, apps and AI shopping flows |
+| **Digital services & content** | Paywalls that AI Agents can actually pay at |
+| **Agent platforms & enterprises** | Let your Agents pay for tools and services autonomously, with full audit |
 
-### Core capabilities
+## Typical use cases
 
-- **Two funding options**. Stablecoin prefunding and credit card spending limits.
-- **Multiple currencies and networks**. USDC, USDT, USDG, and XSGD across networks including Base, BSC, Ethereum, and Solana.
-- **Agent security**. Know Your Agent (KYA) checks agent eligibility. Intent Guard checks payment intent.
-- **Two merchant wallet options**. Merchants can use the default custodial wallet or connect their own Web3 wallet.
-- **Activity records**. Support reconciliation, audits, and merchant marketing.
+### Primary — AI Agents pay you (collect)
 
-### Two product lines
+- A travel Agent books and pays for a hotel room inside the chat — you get paid, the user never opens a checkout page
+- An Agent buys data, search or model inference per call — every call becomes revenue
+- A shopping Agent checks out at your store on the user's behalf
 
-- **Agent Pay-in for accepting payments from agents.** API, MCP, content, and compute providers can accept payments from agents through one integration.
-- **Agent Pay-out for delegated purchases.** A business can authorize an agent to buy within specified limits and rules while retaining audit and reconciliation records.
+### Secondary — your own Agents pay out (spend)
 
-## 2. Business value
+- An enterprise Agent pays for approved tools and services within its budget, with a full audit trail
 
-| Audience | Benefit |
-| --- | --- |
-| Users | Authorize a stablecoin balance or a credit card spending limit once. Track and revoke the authorization without signing each payment. |
-| Agents and platforms | Use one API for seven protocols without implementing each protocol separately. |
-| Merchants | See stablecoin payments confirmed immediately with T+1 net settlement. Fiat card payments clear through the card network. Merchants can hold stablecoins or withdraw fiat. |
-| Businesses | Control and audit agent purchases. Use activity records for customer insights and targeted marketing. |
+## Contact
 
-Agent Pay applies the card network model of authorization, clearing, and settlement to stablecoins and wallet signatures. Card and stablecoin payments use the same authorization and ledger model. Authorizations take place off-chain, and settlement happens in batches.
-
-## 3. Funds flow
-
-An agent payment passes through four stages. The user authorizes the agent once at the first stage. Payment and settlement then proceed automatically.
-
-<Frame caption="How an Agent Pay Payment Works">
-  <img src="/images/agentpay/payment-flow.png" alt="Agent Pay flow from user authorization through the YeahPay gateway and custody to merchant settlement" />
-</Frame>
-
-| Stage | Responsible party | What happens |
-| --- | --- | --- |
-| ① User and agent (once) | User | The user chooses a credit card with a fiat spending limit, a local wallet such as a mobile app or hardware wallet, or a web wallet such as a browser or custodial wallet. The user sets an amount, expiry, and merchant scope and authorizes the agent. |
-| ② YeahPay gateway (each payment) | Platform | The gateway receives agent payment requests through protocols such as x402, AP2, ACP, MPP, and TAP. It checks the spending limit, policy, and payment intent. If they match, it issues settlement instructions and records the payment in real time. |
-| ③ Custody (each payment) | Licensed custodian | The custodian holds prepaid balances in USDC, USDT, USDG, and XSGD. Customer assets are segregated and tracked 1:1 on the ledger. Internal transfers incur no gas, complete in seconds, and are visible to merchants immediately. |
-| ④ Merchant settlement (T+1) | Platform and custodian | Net amounts are settled. Merchants can hold stablecoins, withdraw on-chain, or convert to SGD and withdraw fiat. Users and merchants receive payment results, statements, and reconciliation details. |
-
-Licensed custodians hold funds separately from platform assets. YeahPay does not take custody of funds. Frequent payments are recorded off-chain, with on-chain transactions at funding and withdrawal. Each authorization, payment, and refund has an audit record.
-
-## 4. Integration
-
-| Integration option | Audience | Capabilities |
-| --- | --- | --- |
-| Merchant API or SDK | E-commerce, SaaS, and physical stores | Payments, refunds, reconciliation, and webhook callbacks |
-| Protocol gateway | API, MCP, and compute providers | Accept payments from agents through a single integration with protocols such as x402 |
-| Card network | Merchants accepting credit cards | Credit card authorization and clearing through fiat card networks such as Visa TAP and Mastercard Agent Pay |
-| Agent integration | Agent platforms and enterprise automation | Wallet setup, preauthorization management, payment execution, and consolidated statements |
-| Insights subscription | Merchants with marketing needs | Activity events, aggregated reports (T+1), and real-time webhooks |
-
-Before integration, prepare business qualification documents, a settlement account, a product or service catalog, and a callback URL. Merchants can use a custodial wallet or connect their own Web3 wallet. Fiat card payments also require card acquiring configuration. YeahPay provides a sandbox and integration support.
-
-Typical sandbox integration takes 3–5 business days. Production launch takes 2–4 weeks, depending on compliance review.
-
-Contact the YeahPay commercial team for fees, settlement schedules, spending limits, and contract terms.
-
-<Frame caption="Figure 1. Mastercard Agent partnership case">
-  <img src="/images/agentpay/mastercard-agent-case.png" alt="Mastercard Agent case showing store discovery, product selection, ordering, and payment in one chat" />
-</Frame>
-
-<Frame caption="Figure 2. Fushi AI Shop partnership case">
-  <img src="/images/agentpay/fushi-ai-shop-case.png" alt="Fushi AI Shop case showing AI concierge and MCP orders paid through YeahPay" />
-</Frame>
-
-## 5. Frequently asked questions
-
-<AccordionGroup>
-  <Accordion title="Q1. What does authorizing once mean? Must I sign each payment?">
-    When you first use Agent Pay, sign with a wallet or authorize a credit card to set your spending limit, expiry, merchant scope, and per-payment limit. The agent can then pay within those limits without further signatures. You can review all payment records in real time.
-  </Accordion>
-  <Accordion title="Q2. Who holds my funds?">
-    A licensed Web3 wallet custodian holds funds in segregated customer accounts. Customer assets are separate from the platform's funds and cannot be used by the platform. The YeahPay ledger corresponds 1:1 to the custodian's balance and can be verified at any time.
-  </Accordion>
-  <Accordion title="Q3. How does Agent Pay control agent spending?">
-    Agent Pay enforces a hard spending limit, checks the agent and its permissions through KYA, and uses Intent Guard to compare payment details against the authorized intent. Unusual payments are blocked or sent back to the user for confirmation.
-  </Accordion>
-  <Accordion title="Q4. Which currencies and chains are supported?">
-    Agent Pay supports USDC, USDT, USDG, and XSGD on networks including Base, BSC, Ethereum, and Solana. Prices are quoted in USD. You can select a supported currency and see the exchange rate during the quote lock window.
-  </Accordion>
-  <Accordion title="Q5. Can I use a credit card without stablecoins?">
-    Yes. Once the card network authorizes a fiat spending limit, you can use a credit card to pay. Credit card and stablecoin limits share the same authorization and statements.
-  </Accordion>
-  <Accordion title="Q6. How do I revoke authorization?">
-    You can revoke authorization in the app or dashboard at any time. Revocation takes effect on-chain immediately. The agent can no longer initiate charges, and unused authorized funds can be returned to the original funding source.
-  </Accordion>
-  <Accordion title="Q7. When do merchants receive funds?">
-    Payment confirmation is visible immediately. Funds settle by default on a T+1 net basis. Merchants can retain stablecoins, withdraw on-chain, or convert to SGD and withdraw fiat through FAST or PayNow.
-  </Accordion>
-  <Accordion title="Q8. How do refunds and disputes work?">
-    Refunds can go back to the original payment method. During a dispute, the amount in question is frozen and settlement for the merchant is paused. YeahPay resolves the dispute under its terms of service and keeps an audit record of the process and outcome.
-  </Accordion>
-  <Accordion title="Q9. Is my payment data used for marketing?">
-    Marketing requires separate consent from payment authorization. You can revoke it at any time. Merchants receive only de-identified aggregate insights. Agent Pay does not link a customer's identity across merchants and follows data protection requirements such as the PDPA.
-  </Accordion>
-  <Accordion title="Q10. How long does it take to get started?">
-    Users can start after authorizing once. Sandbox integration for merchants takes 3–5 business days, and production launch takes 2–4 weeks. Contact the YeahPay commercial team for fees, limits, and settlement terms.
-  </Accordion>
-</AccordionGroup>
+> **For pricing, onboarding and any details — ask your YeahPay business manager.**
