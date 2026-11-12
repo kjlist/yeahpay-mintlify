@@ -3,7 +3,7 @@
   "info": {
     "title": "YeahPay API（SG 交易）",
     "version": "2.1",
-    "description": "根據《YeahPay API 介面文件（SG_交易）2.1》整理。請求簽名使用 SHA-512：按 URL、appId、timestamp、version、nonce、原始請求體、API key 的順序，以換行符（ASCII 0x0A）連接後計算摘要。API key 僅參與簽名，不作為請求頭傳輸。"
+    "description": "根據《YeahPay API 介面文件（SG_交易）2.1》整理。請求簽名使用 SHA-512：按 URL、appId、timestamp、version、nonce、原始請求體、API key 的順序，以換行符（ASCII 0x0A）連接後計算摘要。API key 僅參與簽名，不作為請求頭傳輸。\n\n收銀台介面（getRedirectUrl、createIntent、queryIntentStatus）的沙盒請求前綴為 `/acceptance/sandbox/checkout`。其他商戶 API 使用 `/acceptance/sandbox`。"
   },
   "servers": [
     {
@@ -119,7 +119,7 @@
         },
         "servers": [
           {
-            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
             "description": "沙盒環境",
             "x-environment": "sandbox"
           },
@@ -141,7 +141,7 @@
         "operationId": "createIntent",
         "servers": [
           {
-            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
             "description": "沙盒環境",
             "x-environment": "sandbox"
           },
@@ -363,7 +363,7 @@
         "operationId": "queryIntentStatus",
         "servers": [
           {
-            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
             "description": "沙盒環境",
             "x-environment": "sandbox"
           },

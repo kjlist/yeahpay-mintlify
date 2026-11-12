@@ -3,7 +3,7 @@
   "info": {
     "title": "YeahPay API (SG Transactions)",
     "version": "2.1",
-    "description": "Based on YeahPay API Documentation (SG Transactions) 2.1. Request signatures use SHA-512. Join URL, appId, timestamp, version, nonce, the raw request body, and API key in that order with line feeds (ASCII 0x0A), then calculate the digest. The API key is used only for signing and is never sent in a request header."
+    "description": "Based on YeahPay API Documentation (SG Transactions) 2.1. Request signatures use SHA-512. Join URL, appId, timestamp, version, nonce, the raw request body, and API key in that order with line feeds (ASCII 0x0A), then calculate the digest. The API key is used only for signing and is never sent in a request header.\n\nThe sandbox request prefix for Checkout endpoints (getRedirectUrl, createIntent, and queryIntentStatus) is `/acceptance/sandbox/checkout`. Other merchant APIs use `/acceptance/sandbox`."
   },
   "servers": [
     {
@@ -119,7 +119,7 @@
         },
         "servers": [
           {
-            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
             "description": "Sandbox",
             "x-environment": "sandbox"
           },
@@ -141,7 +141,7 @@
         "operationId": "createIntent",
         "servers": [
           {
-            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
             "description": "Sandbox",
             "x-environment": "sandbox"
           },
@@ -363,7 +363,7 @@
         "operationId": "queryIntentStatus",
         "servers": [
           {
-            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+            "url": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
             "description": "Sandbox",
             "x-environment": "sandbox"
           },

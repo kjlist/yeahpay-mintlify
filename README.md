@@ -174,7 +174,7 @@ Codex 和 Claude Code 共用 `scripts/hooks/` 下的 hook 实现：
 1. 不要直接编辑 `openapi-en.json`，重新生成时所有手工修改都会被覆盖。
 2. 不要直接编辑 `snippets/signed-api-playground.jsx` 中标记为自动生成的 OpenAPI 操作块；组件其他非生成部分可以正常维护。
 3. 新增中文 OpenAPI 文案但未补充英文映射时，英文生成脚本会失败。
-4. 商户 API 的沙箱入口为 `https://sandbox-api.yeahpay.net/acceptance/sandbox`。生产环境的 Checkout 接口使用 `https://open-api.yeahpay.net/gwp/checkout`，其他商户 API 使用 OpenAPI 中配置的生产入口。签名工具通过 `x-environment` 读取各接口的沙箱和生产地址。
+4. Checkout 接口的沙箱入口为 `https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout`，其他商户 API 的沙箱入口为 `https://sandbox-api.yeahpay.net/acceptance/sandbox`。生产环境的 Checkout 接口使用 `https://open-api.yeahpay.net/gwp/checkout`，其他商户 API 使用 OpenAPI 中配置的生产入口。签名工具通过 `x-environment` 读取各接口的沙箱和生产地址。
 5. 仓库没有 Node.js 包清单或锁文件；生成脚本仅依赖 Node.js 内置模块，Mintlify CLI 需要单独全局安装。
 6. 仓库没有内置发布工作流。线上发布方式取决于外部 Mintlify 项目的部署配置。
 7. `docs.json` 中的 Support、Dashboard 和页脚社交链接仍是 Mintlify 通用配置，正式发布前应替换为 YeahPay 的实际链接。

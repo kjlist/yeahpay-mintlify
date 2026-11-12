@@ -140,7 +140,7 @@ const translations = new Map(Object.entries({
   "未支付": "Unpaid",
   "本地卡标识": "Local card indicator",
   "查询支付方式": "Query payment methods",
-  "根据《YeahPay API 接口文档（SG_交易）2.1》整理。请求签名使用 SHA-512：按 URL、appId、timestamp、version、nonce、原始请求体、API key 的顺序，以换行符（ASCII 0x0A）连接后计算摘要。API key 仅参与签名，不作为请求头传输。": "Based on YeahPay API Documentation (SG Transactions) 2.1. Request signatures use SHA-512. Join URL, appId, timestamp, version, nonce, the raw request body, and API key in that order with line feeds (ASCII 0x0A), then calculate the digest. The API key is used only for signing and is never sent in a request header.",
+  "根据《YeahPay API 接口文档（SG_交易）2.1》整理。请求签名使用 SHA-512：按 URL、appId、timestamp、version、nonce、原始请求体、API key 的顺序，以换行符（ASCII 0x0A）连接后计算摘要。API key 仅参与签名，不作为请求头传输。\n\n收银台接口（getRedirectUrl、createIntent、queryIntentStatus）的沙箱请求前缀为 `/acceptance/sandbox/checkout`。其他商户 API 使用 `/acceptance/sandbox`。": "Based on YeahPay API Documentation (SG Transactions) 2.1. Request signatures use SHA-512. Join URL, appId, timestamp, version, nonce, the raw request body, and API key in that order with line feeds (ASCII 0x0A), then calculate the digest. The API key is used only for signing and is never sent in a request header.\n\nThe sandbox request prefix for Checkout endpoints (getRedirectUrl, createIntent, and queryIntentStatus) is `/acceptance/sandbox/checkout`. Other merchant APIs use `/acceptance/sandbox`.",
   "测试环境": "Test environment",
   "消费者信息，JSON 字符串": "Consumer information as a JSON string",
   "渠道交易时间": "Channel transaction time",

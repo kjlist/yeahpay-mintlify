@@ -149,7 +149,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
     },
   }
   // BEGIN AUTO-GENERATED OPENAPI OPERATIONS
-  // Source fingerprint: 19911abe24a99dcd
+  // Source fingerprint: 3f750a3f7527290c
   const operationDefinitions = [
     {
       "operationId": "getRedirectUrl",
@@ -159,7 +159,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Get Unified Checkout URL",
       "summaryHk": "取得統一收銀台地址",
       "serverUrls": {
-        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
         "production": "https://open-api.yeahpay.net/gwp/checkout"
       },
       "sampleBody": {
@@ -193,7 +193,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Create PaymentIntent",
       "summaryHk": "建立支付意圖",
       "serverUrls": {
-        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
         "production": "https://open-api.yeahpay.net/gwp/checkout"
       },
       "sampleBody": {
@@ -220,7 +220,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
       "summaryEn": "Query PaymentIntent",
       "summaryHk": "查詢支付意圖",
       "serverUrls": {
-        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox",
+        "sandbox": "https://sandbox-api.yeahpay.net/acceptance/sandbox/checkout",
         "production": "https://open-api.yeahpay.net/gwp/checkout"
       },
       "sampleBody": {

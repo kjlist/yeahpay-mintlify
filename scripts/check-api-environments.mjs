@@ -28,10 +28,16 @@ const checkoutIds = new Set(["getRedirectUrl", "createIntent", "queryIntentStatu
 const productionDomain = "https://open-api.yeahpay.net";
 const sandboxDomain = "https://sandbox-api.yeahpay.net";
 const expected = (operation, environment) => {
-  const domain = environment === "sandbox" ? sandboxDomain : productionDomain;
-  const prefix = environment === "sandbox" ? "/acceptance/sandbox" : checkoutIds.has(operation.operationId) ? "/gwp/checkout" : "/acceptance/acceptance-open-api";
-  const signingPrefix = environment === "sandbox" ? "/sandbox" : checkoutIds.has(operation.operationId) ? "/checkout" : "/acceptance-open-api";
-  return { endpoint: `${domain}${prefix}${operation.path}`, signUrl: `${signingPrefix}${operation.path}` };
+  const isCheckout = checkoutIds.has(operation.operationId);
+  if (environment === "sandbox") {
+    const signingPrefix = isCheckout ? "/sandbox/checkout" : "/sandbox";
+    const signUrl = `${signingPrefix}${operation.path}`;
+    return { endpoint: `${sandboxDomain}/acceptance${signUrl}`, signUrl };
+  }
+  const gateway = isCheckout ? "/gwp" : "/acceptance";
+  const signingPrefix = isCheckout ? "/checkout" : "/acceptance-open-api";
+  const signUrl = `${signingPrefix}${operation.path}`;
+  return { endpoint: `${productionDomain}${gateway}${signUrl}`, signUrl };
 };
 const sourceOperations = Object.entries(spec.paths).flatMap(([path, item]) => Object.entries(item)
   .filter(([, operation]) => operation?.operationId)
@@ -90,6 +96,10 @@ if (publicMode) {
   assert.ok(!jsx.includes("https://t-acquire-business.lepass.cn"));
   assert.match(jsx, /\[environment, setEnvironment\] = useState\("sandbox"\)/);
   assert.equal(signingUrlFor(`${productionDomain}/gwp/checkout/`, "/openapi/v2/createIntent"), "/checkout/openapi/v2/createIntent");
+  assert.equal(
+    signingUrlFor(`${sandboxDomain}/acceptance/sandbox/checkout/`, "/openapi/v2/createIntent"),
+    "/sandbox/checkout/openapi/v2/createIntent",
+  );
   // Execute each published JavaScript signing example with a local fetch stub.
   for (const page of ["signature.mdx", "en/signature.mdx", "zh-hk/signature.mdx"]) {
     const markdown = await readFile(new URL(page, root), "utf8");
