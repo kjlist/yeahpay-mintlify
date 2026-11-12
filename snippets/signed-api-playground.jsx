@@ -936,7 +936,7 @@ export const SignedApiPlayground = ({ locale = "en" }) => {
             type="button"
             onClick={generateSignature}
             disabled={generating || !selectedOperationId}
-            className="w-full rounded-xl bg-gradient-to-r from-[#0061ff] to-[#576dff] px-4 py-3.5 text-sm font-semibold text-white shadow-[0_10px_28px_-14px_rgba(0,85,255,0.8)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-xl bg-blue-700 px-4 py-3.5 text-sm font-semibold text-white transition-colors enabled:hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:cursor-not-allowed disabled:bg-zinc-200 disabled:text-zinc-600 dark:focus-visible:outline-blue-300 dark:disabled:bg-zinc-800 dark:disabled:text-zinc-400"
           >
             {generating ? text.generating : text.generate}
           </button>
